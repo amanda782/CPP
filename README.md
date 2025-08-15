@@ -12,11 +12,11 @@ Conteúdo baseado nas disciplinas da graduação em Ciência da Computação, co
 
 ## **🗂 Estrutura do repositório**
 
-exercicios/ — práticas e desafios realizados durante as aulas
+**exercicios/** — práticas e desafios realizados durante as aulas
 
-trabalhos/ — projetos e atividades avaliativas entregues ao longo do curso
+**trabalhos/** — projetos e atividades avaliativas entregues ao longo do curso
 
-provas/ — questões resolvidas e revisões para estudo
+**provas/** — questões resolvidas e revisões para estudo
 
 ---
 
