@@ -12,27 +12,27 @@ Conteúdo baseado nas disciplinas da graduação em Ciência da Computação, co
 
 ## **🗂 Estrutura do repositório**
 
-**exercicios/** — práticas e desafios realizados durante as aulas
+**exercicios/** — práticas e desafios realizados durante as aulas.
 
-**trabalhos/** — projetos e atividades avaliativas entregues ao longo do curso
+**trabalhos/** — projetos e atividades avaliativas entregues ao longo do curso.
 
-**provas/** — questões resolvidas e revisões para estudo
+**provas/** — questões resolvidas e revisões para estudo.
 
 ---
 
 ## **📚 Aprendizados em destaque**
 
-- Sintaxe básica e tipos de dados do C++
+- Sintaxe básica e tipos de dados do C++;
 
-- Estruturas condicionais e de repetição
+- Estruturas condicionais e de repetição;
 
-- Funções e passagem de parâmetros
+- Funções e passagem de parâmetros;
 
-- Manipulação de vetores, matrizes e strings
+- Manipulação de vetores, matrizes e strings;
 
-- Programação orientada a objetos (POO)
+- Programação orientada a objetos (POO);
 
-- Boas práticas e organização de código
+- Boas práticas e organização de código;
 
 ---
 
@@ -44,5 +44,5 @@ Este repositório é de uso pessoal, mas qualquer sugestão ou melhoria será se
 
 ## **🧭 Meu objetivo**
 
-Documentar minha trajetória com C++ durante a faculdade e criar um material que sirva como base para revisões e para inspirar outros estudantes a persistirem na programação.# C++
+Documentar minha trajetória com C++ durante a faculdade e criar um material que sirva como base para revisões e para inspirar outros estudantes a persistirem na programação.
 
