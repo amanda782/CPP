@@ -22,17 +22,17 @@ Conteúdo baseado nas disciplinas da graduação em Ciência da Computação, co
 
 ## **📚 Aprendizados em destaque**
 
-Sintaxe básica e tipos de dados do C++
+- Sintaxe básica e tipos de dados do C++
 
-Estruturas condicionais e de repetição
+- Estruturas condicionais e de repetição
 
-Funções e passagem de parâmetros
+- Funções e passagem de parâmetros
 
-Manipulação de vetores, matrizes e strings
+- Manipulação de vetores, matrizes e strings
 
-Programação orientada a objetos (POO)
+- Programação orientada a objetos (POO)
 
-Boas práticas e organização de código
+- Boas práticas e organização de código
 
 ---
 
