@@ -1,4 +1,4 @@
-##**🧠 Estudos de C++**
+#**🧠 Estudos de C++**
 
 Este repositório reúne meus estudos práticos de C++ realizados ao longo da faculdade. Aqui você encontrará exercícios resolvidos, trabalhos acadêmicos e provas comentadas, registrando minha evolução e aprofundamento na linguagem.
 
