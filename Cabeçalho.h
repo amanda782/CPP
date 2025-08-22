@@ -11,7 +11,7 @@ public:
 
 	//metodos
 	void imprime_info();
-	bool is_filho_unico(int irmaos);
+	bool is_filho_unico(); // vai pegar o atributo irmaos
 
 	//atributos
 private:
