@@ -8,10 +8,10 @@ class Atleta {
 public:
 	Atleta();
 	Atleta(string nome, int idade);
-	~Atleta();
+	virtual ~Atleta();
 
 	//metodos:
-	void imprime_info();
+	virtual void imprime_info();
 	string get_nome_atleta();
 	int get_idade_atleta();
 
