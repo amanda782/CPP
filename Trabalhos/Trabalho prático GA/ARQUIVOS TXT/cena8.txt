@@ -5,6 +5,5 @@ N: Acromantula
 H: 10
 E: 16
 S: 8
-T: 50
 P: 0
 9:7
