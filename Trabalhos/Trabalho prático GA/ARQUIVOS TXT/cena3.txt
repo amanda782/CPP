@@ -1,0 +1,4 @@
+Voce saca o Mapa do Maroto e sussurra 'Juro solenemente nao fazer nada de bom'. A tinta magica revela cada canto do castelo. Voce percebe que Argus Filch esta fazendo a ronda a dois corredores de distancia. Voce precisa contar com a sorte para nao ser visto ao passar pela area que ele vai inspecionar.
+
+#4: (Sucesso no Teste de Sorte)
+#5: (Falha no Teste de Sorte)

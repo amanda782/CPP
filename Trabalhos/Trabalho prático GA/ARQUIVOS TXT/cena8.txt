@@ -1,0 +1,10 @@
+O corredor te leva a uma sala ainda maior, cujo teto parece o ceu noturno. Do escuro, oito olhos brilham e voce ouve o som de pinças estalando. Uma Acromantula gigante surge das sombras, bloqueando o seu caminho. Ela se prepara para o duelo final do seu teste.
+
+M: S
+N: Acromantula
+H: 10
+E: 16
+S: 8
+T: 50
+P: 0
+9:7
