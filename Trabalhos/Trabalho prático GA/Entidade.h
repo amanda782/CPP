@@ -18,6 +18,7 @@ public:
     int getEnergia();
     int getEnergiaMax();
     int getSorte();
+    virtual int calcular_FA();
 
 private:
 	string nome;
