@@ -8,7 +8,7 @@
 using namespace std;
 
 class Jogador: public Entidade {
-public:
+public: // pra construir o jogador, precisamos definir a distribuição de pontos no MAIN
 	Jogador();
 	Jogador(int energia, int sorte, int habilidade, int provisoes);
 	~Jogador();
@@ -21,10 +21,10 @@ public:
 	bool testar_sorte();
 
 	//metodos de gerenciamento:
-	void usar_provisao();
+	bool usar_provisao();
 	void adiciona_item(Item novo_item);
 	void adiciona_provisao(int quantidade_provisoes);
-	void equipar_item(Item equipar_item);
+	void equipar_item(int ponteiro_do_item); // recebe a posição do item no vetor inventário
 
 private:
 	int energia_atual_jogador;
