@@ -12,9 +12,9 @@ public:
 
 	//metodos de acesso aos atributos:
 	string get_nome(); // como o atributo é privado, aqui acessamos ele sem problemas
-	char get_tipo_item();
-	bool get_combate_item();
-	int get_FA_item();
+	char get_tipo();
+	bool get_combate();
+	int get_FA();
 	int get_dano();
 
 	//metodos utilitários:
