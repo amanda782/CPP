@@ -3,7 +3,7 @@
 
 
 Item::Item() {
-	nome = ' ' ;
+	nome = "Item vazio";
 	tipo = ' ';
 	forca_de_ataque = 0;
 	dano = 0;
@@ -23,14 +23,14 @@ string Item::get_nome() {
 	return nome;
 }
 
-char Item::get_tipo_item() {
+char Item::get_tipo() {
 	return tipo;
 }
 
-bool Item::get_combate_item() {
+bool Item::get_combate() {
 	return combate;
 }
-int Item::get_FA_item() {
+int Item::get_FA() {
 	return forca_de_ataque;
 }
 int Item::get_dano() {
@@ -65,6 +65,6 @@ string Item::get_descricao() {
 		ss << "Reduz Dano em: "  << this->dano <<endl;
 	}
 
-	ss << "Pode ser usado em combate: " << (this->get_combate_item() ? "Sim" : "Nao");
+	ss << "Pode ser usado em combate: " << (this->get_combate() ? "Sim" : "Nao");
 	return ss.str(); // entender melhor o this
 }
