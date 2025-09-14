@@ -15,6 +15,10 @@ public:
 	int getTesouroDeixado();
 	int getProvisoesDeixadas();
 	Item getItemDeixado();
+	void setTesouroDeixado(int qtTesouro);
+	void setProvisoesDeixadas(int qtProvisoes);
+	void setItemDeixado(Item NovoItem);
+
 
 
 private:

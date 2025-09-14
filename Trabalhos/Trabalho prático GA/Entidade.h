@@ -19,6 +19,10 @@ public:
     int getEnergiaMax();
     int getSorte();
     virtual int calcular_FA();
+    void setNome(string novoNome);
+    void setHabilidade(int novaHabilidade);
+    void setEnergia(int novaEnergia);
+    void setSorte(int novaSorte);
 
 private:
 	string nome;

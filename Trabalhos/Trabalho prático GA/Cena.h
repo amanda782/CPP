@@ -13,18 +13,18 @@ public:
     bool carregarCena(int numeroDaCena);
 
     string getTextoDaHistoria();
-    map<int, string>& getOpcoes();
+    map<int, string> getOpcoes();
     Inimigo getInimigo();
-    bool ehUmaBatalha();
+    bool ehUmaBatalha(); //expõe se é ou não 
     int getIdCenaVitoria();
     int getIdCenaDerrota();
     vector<Item> getItensEncontrados();
 
 private: 
     string textoDaHistoria;
-    map<int, string> opcoes; 
+    map<int, string> opcoes; // opcoes é uma variável do tipo map<int, string> porque ela guarda o map, que nesse caso associa, inteiros e textos.
     Inimigo inimigo;
-    bool ehBatalha;
+    bool ehBatalha; //guarda se é ou não 
     int idCenaVitoria; // guarda os valores das cenas de vitoria, p ir dps
     int idCenaDerrota; // guarda o valor da cena de derrota, p ir dps 
     vector<Item> itensEncontrados;
