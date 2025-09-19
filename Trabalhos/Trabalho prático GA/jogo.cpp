@@ -1,4 +1,7 @@
 #include "jogo.h"
+#include <fstream> 
+#include <vector>
+
 
 Jogo::Jogo() {
 	idCenaAtual = 0;
@@ -23,7 +26,20 @@ void Jogo::mostrarOpcoesEProcessarEscolha() {
 	map<int, string> opcoes = cena.getOpcoes();
 	cout << "\nO que voce faz?" << endl;
 	cout << "------------------------------------------" << endl;
+
+  // Este loop 'for' percorre o mapa e imprime cada par de ID e Texto.
+	for (auto escolha : opcoes) { //TIRAR DUVIDA COM O SOR 
+		cout << escolha.first << ". " << escolha.second << endl; // .first acessa o número e .second acessa o texto do map 
 	}
+	cout << "------------------------------------------" << endl;
+
+	cout << "> ";
+	int escolha;
+	cin >> escolha;
+
+	idCenaAtual = escolha;
+}
+ 
 
 void Jogo::mostrarTelaDeCreditos() {
 	// Comando para limpar a tela do console (cls para Windows, clear para Linux/macOS)
@@ -108,6 +124,50 @@ void Jogo::mostrarTelaDeAbertura() {
 
 		} 
 
+	}
 
+	void Jogo::salvarJogo() {
+		// 1. Abre (ou cria) um arquivo chamado "save.txt" para escrita.
+		// O ofstream apaga o conteudo anterior do arquivo, o que e perfeito para o auto-save.
+		ofstream arquivoDeSave("save.txt");
 
-}
+		// 2. Verifica se o arquivo pôde ser aberto
+		if (arquivoDeSave.is_open()) {
+
+			// 3. Salva os dados do personagem, um por linha
+			//arquivoDeSave << jogador.getNome() << endl; // O nome nao e necessario se for sempre Harry
+			arquivoDeSave << jogador.getHabilidade() << endl;
+			arquivoDeSave << jogador.getEnergia() << endl;
+			arquivoDeSave << jogador.getEnergiaMax() << endl;
+			arquivoDeSave << jogador.getSorte() << endl;
+			arquivoDeSave << jogador.getProvisoes() << endl;
+			arquivoDeSave << jogador.getTesouro() << endl;
+
+			//Salva o estado do jogo
+			arquivoDeSave << idCenaAtual << endl;
+			//arquivoDeSave é um objeto de ofstream, que tratamos como cout e por isso colocamos com << as coisa dentro dele (que é um arquivo tb)
+
+			// Salva as cenas visitadas, separadas por virgula (ex: "1,4,5,")
+			for (int id : cenasVisitadas) { //Para cada int (que vamos chamar de id) dentro da lista cenasVisitadas, faça o seguinte. "Eu quero que você pegue cada lápis de dentro da caixa cenasVisitadas, um de cada vez, do primeiro ao último.""A cada volta, o lápis que você pegar da caixa, guarde-o temporariamente em uma nova variável do tipo int chamada id."
+				arquivoDeSave << id << ",";
+			}
+			arquivoDeSave << endl; // pula linha depois do for 
+
+			// 5. Salva o inventario completo, um item por linha
+			vector<Item> inventario = jogador.getInventario();
+			for (auto item : inventario) {
+				// Escreve cada item no formato: nome;tipo;combate;fa;dano
+				arquivoDeSave << item.getNome() << ";"
+					<< item.getTipoDeItem() << ";"
+					<< item.getPodeEmCombate() << ";"
+					<< item.getFa() << ";"
+					<< item.getDano() << endl;
+			}
+
+			// 6. Fecha o arquivo para garantir que tudo foi salvo
+			arquivoDeSave.close();
+		}
+		else {
+			cout << "ERRO: Nao foi possivel criar o arquivo de salvamento." << endl;
+		}
+	}

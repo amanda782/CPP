@@ -26,6 +26,10 @@ public: // pra construir o jogador, precisamos definir a distribuição de pontos 
 	void adiciona_provisao(int quantidade_provisoes);
 	void equipar_item(int ponteiro_do_item); // recebe a posição do item no vetor inventário
 
+	void setProvisoes(int quantidade);
+	void setTesouro(int quantidade);
+	void limparInventario(); // Para esvaziar o inventario antes de carregar um novo
+
 private:
 	int energia_atual_jogador;
 	int energia_maxima_jogador;
@@ -37,6 +41,8 @@ private:
 	vector<Item> inventario;
 	Item arma_jogador;
 	Item armadura_jogador;
+
+
 
 
 

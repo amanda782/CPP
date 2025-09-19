@@ -99,3 +99,15 @@ void Jogador::equipar_item(int indice_do_item) { // troca entre o inventário e o
 
 }
 
+void Jogador::setProvisoes(int quantidade) {
+	provisoes = quantidade;
+}
+
+void Jogador::setTesouro(int quantidade) {
+	tesouro = quantidade;
+}
+
+void Jogador::limparInventario() {
+	inventario.clear(); // O metodo .clear() esvazia um vector
+}
+

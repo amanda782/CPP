@@ -12,7 +12,7 @@ public:
     Jogo();
     ~Jogo();
 
-    void iniciarJogo(); //julie
+    void iniciarJogo(); //depende de todos os outros métodos 
 
     void mostrarTelaDeAbertura();//julie
     void criarNovoPersonagem();//amanda
@@ -28,4 +28,5 @@ private:
     Cena cena;
     int idCenaAtual;
     bool jogoRodando;
+    vector<int> cenasVisitadas;
 };

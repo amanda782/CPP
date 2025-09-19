@@ -23,6 +23,8 @@ public:
     void setHabilidade(int novaHabilidade);
     void setEnergia(int novaEnergia);
     void setSorte(int novaSorte);
+    void setEnergiaMax(int novaEnergiaMax); // precisa para o carregarJogo()
+
 
 private:
 	string nome;

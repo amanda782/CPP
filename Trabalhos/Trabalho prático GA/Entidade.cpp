@@ -55,12 +55,15 @@ void Entidade::setHabilidade(int novaHabilidade) {
 }
 
 void Entidade::setEnergia(int novaEnergia) {
-	energiaMaxima = novaEnergia;
 	energia = novaEnergia;
 }
 
 void Entidade::setSorte(int novaSorte) {
 	sorte = novaSorte;
+}
+
+void Entidade::setEnergiaMax(int novaEnergiaMax) {
+	energiaMaxima = novaEnergiaMax;
 }
 
 int Entidade::calcular_FA() {
