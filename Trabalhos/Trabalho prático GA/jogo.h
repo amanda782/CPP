@@ -18,7 +18,7 @@ public:
     void criarNovoPersonagem();//amanda
     void mostrarOpcoesEProcessarEscolha(); // julie
     void iniciarBatalha(); // amanda
-    void mostrarTelaDeCreditos(); //julie
+    void mostrarTelaDeCreditos(); //julie 
     void salvarJogo(); //julie
     bool carregarJogo();// julie
 
