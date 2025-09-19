@@ -12,7 +12,7 @@ public:
     Jogo();
     ~Jogo();
 
-    void iniciarJogo(); //depende de todos os outros métodos 
+    void iniciarJogo(); //depende de outros métodos 
 
     void mostrarTelaDeAbertura();//julie
     void criarNovoPersonagem();//amanda

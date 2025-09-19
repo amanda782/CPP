@@ -1,6 +1,12 @@
 #include "jogo.h"
+#include"Entidade.h"
+#include"Jogador.h"
+#include"Inimigo.h"
+#include"Item.h"
 #include <fstream> 
 #include <vector>
+
+using namespace std;
 
 
 Jogo::Jogo() {
@@ -13,13 +19,22 @@ Jogo::~Jogo() {}
 void Jogo::iniciarJogo() {
 	idCenaAtual = 1;
 	jogoRodando = true;
+	mostrarTelaDeAbertura();
+
 	while (jogoRodando == true) {
-		cena.carregarCena(idCenaAtual); 
-		if (cena.ehUmaBatalha() == true) {
-			//iniciarBatalha(); //método ainda não foi criado
-		}else (cena.ehUmaBatalha == false)
-			// escolha() // tb não foi criado
+		cena.carregarCena(idCenaAtual);
+
+		cout << "\n--- Cena " << idCenaAtual << " ---\n" << endl;
+		cout << cena.getTextoDaHistoria() << endl;
+
+		if (cena.eUmaBatalha()) {
+			iniciarBatalha();
+		}
+		else {
+			mostrarOpcoesEProcessarEscolha();
+		}
 	}
+}
 }
 
 void Jogo::mostrarOpcoesEProcessarEscolha() {
@@ -71,7 +86,7 @@ void Jogo::mostrarTelaDeAbertura() {
 		system("cls");
 
 		cout << "------------------------------------------" << endl;
-		cout << "        AVENTURAS EM HOGWARTS" << endl; 
+		cout << "        AVENTURAS EM HOGWARTS" << endl;
 		cout << "------------------------------------------" << endl << endl;
 
 		cout << "1. Novo Jogo" << endl;
@@ -85,46 +100,46 @@ void Jogo::mostrarTelaDeAbertura() {
 		cin >> escolha;
 
 		switch (escolha) {
-			case 1: 
-				criarNovoPersonagem();
+		case 1:
+			criarNovoPersonagem();
+			sairDoMenu = true;
+			break;
+
+		case 2:
+			//iniciarJogo();
+			//sairDoMenu = true; //ISSO FOI O QUE FIZ, TÁ ERRADO, PORQUE NÃO É SÓ INICIAR, É CARREGAR ALGO QUE JÁ EXISTE.
+			//break; 
+
+			if (carregarJogo()) { // 1. Tenta arrumar a mesa com os dados do save.
 				sairDoMenu = true;
-				break;
+			}
+			else {
+				// Avisa que nao conseguiu arrumar a mesa (nao achou o save).
+				cout << "Nenhum jogo salvo encontrado." << endl;
+			}
+			break;
 
-			case 2: 
-				//iniciarJogo();
-				//sairDoMenu = true; //ISSO FOI O QUE FIZ, TÁ ERRADO, PORQUE NÃO É SÓ INICIAR, É CARREGAR ALGO QUE JÁ EXISTE.
-				//break; 
+		case 3:
+			mostrarTelaDeCreditos();
+			//NÃO PRECISA DE SAIRDOMENU PORQUE A INTENÇÃO É QUE O JOGADOR VOLTE PARA O MENU DENTRO DA PRÓPRIA FUNÇÃO. 
+			break;
 
-				if (carregarJogo()) { // 1. Tenta arrumar a mesa com os dados do save.
-					iniciarJogo();    // 2. Se conseguiu, começa o jantar.
-					sairDoMenu = true;
-				}
-				else {
-					// Avisa que nao conseguiu arrumar a mesa (nao achou o save).
-					cout << "Nenhum jogo salvo encontrado." << endl;
-				}
-				break;
+		case 4:
+			cout << "Ate a proxima!" << endl;
+			jogoRodando = false;  // Desliga o loop principal do jogo
+			sairDoMenu = true;    // E tambem sai do loop do menu
+			break;
 
-			case 3:
-				mostrarTelaDeCreditos();
-				//NÃO PRECISA DE SAIRDOMENU PORQUE A INTENÇÃO É QUE O JOGADOR VOLTE PARA O MENU DENTRO DA PRÓPRIA FUNÇÃO. 
-				break;
+		default: // Caso o jogador digite um numero invalido
+			cout << "Opcao invalida! Pressione Enter para tentar novamente...";
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cin.get();
+			break;
 
-			case 4:
-				cout << "Ate a proxima!" << endl;
-				jogoRodando = false;  // Desliga o loop principal do jogo
-				sairDoMenu = true;    // E tambem sai do loop do menu
-				break;
-
-			default: // Caso o jogador digite um numero invalido
-				cout << "Opcao invalida! Pressione Enter para tentar novamente...";
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-				cin.get();
-				break;
-
-		} 
+		}
 
 	}
+}
 
 	void Jogo::salvarJogo() {
 		// 1. Abre (ou cria) um arquivo chamado "save.txt" para escrita.
@@ -170,4 +185,77 @@ void Jogo::mostrarTelaDeAbertura() {
 		else {
 			cout << "ERRO: Nao foi possivel criar o arquivo de salvamento." << endl;
 		}
+	}
+#include <fstream>
+#include <sstream> // Essencial para o stringstream
+#include <iostream>
+#include <limits>  // Para o cin.ignore
+
+	bool Jogo::carregarJogo() {
+		//  Tenta abrir o arquivo "save.txt" para leitura
+		ifstream arquivoDeSave("save.txt");
+				// Se nao conseguiu abrir (ex: o arquivo nao existe), avisa que falhou e retorna.
+		if (!arquivoDeSave.is_open()) {
+			return false;
+		}
+
+		// Variavel temporaria para ler cada linha
+		string linha;
+
+		getline(arquivoDeSave, linha); jogador.setHabilidade(stoi(linha));
+		getline(arquivoDeSave, linha); jogador.setEnergia(stoi(linha));
+		getline(arquivoDeSave, linha); jogador.setEnergiaMax(stoi(linha));
+		getline(arquivoDeSave, linha); jogador.setSorte(stoi(linha));
+		getline(arquivoDeSave, linha); jogador.setProvisoes(stoi(linha));
+		getline(arquivoDeSave, linha); jogador.setTesouro(stoi(linha));
+
+		// Le e define a cena onde o jogo deve continuar
+		getline(arquivoDeSave, linha); idCenaAtual = stoi(linha);
+
+		getline(arquivoDeSave, linha); // Le a linha inteira (ex: "1,4,5,")
+
+		stringstream ss_cenas(linha); // Usa um stringstream para quebrar a linha
+		string parte_cena;
+		cenasVisitadas.clear(); // Limpa o vetor de cenas visitadas antes de preencher
+
+		// Loop que le cada numero separado por virgula
+		while (getline(ss_cenas, parte_cena, ',')) {
+			if (!parte_cena.empty()) { // Garante que nao pegamos partes vazias
+				cenasVisitadas.push_back(stoi(parte_cena));
+			}
+		}
+
+		jogador.limparInventario(); // Esvazia o inventario atual antes de adicionar os itens salvos
+
+		// Loop que le o resto do arquivo, linha por linha. Cada linha e um item.
+		while (getline(arquivoDeSave, linha)) {
+			stringstream ss_item(linha);
+			string parte_item;
+
+			// Variaveis para guardar os 5 atributos do item
+			string nome;
+			char tipo;
+			bool podeCombate;
+			int fa, dano;
+
+			// Pega as partes separadas por ';'
+			getline(ss_item, parte_item, ';'); nome = parte_item;  // lê o que tá em ss_item ATÉ O ; e coloca em parte_item 
+			getline(ss_item, parte_item, ';'); tipo = parte_item[0];
+			getline(ss_item, parte_item, ';'); podeCombate = (stoi(parte_item) == 1);
+			getline(ss_item, parte_item, ';'); fa = stoi(parte_item);
+			getline(ss_item, parte_item, ';'); dano = stoi(parte_item);
+
+			Item itemCarregado(nome, tipo, podeCombate, fa, dano);
+			jogador.adicionarItem(itemCarregado);
+		}
+
+		arquivoDeSave.close();
+
+		cout << "\nJogo carregado com sucesso!" << endl;
+		cout << "Pressione Enter para continuar...";
+		// cin.ignore para limpar qualquer entrada residual antes de pausar
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cin.get();
+
+		return true; // Retorna 'true' para indicar que o carregamento foi um sucesso
 	}
