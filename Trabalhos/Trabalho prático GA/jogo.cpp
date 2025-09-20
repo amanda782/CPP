@@ -3,6 +3,7 @@
 #include"Jogador.h"
 #include"Inimigo.h"
 #include"Item.h"
+#include <iostream>
 #include <fstream> 
 #include <vector>
 
@@ -27,7 +28,7 @@ void Jogo::iniciarJogo() {
 		cout << "\n--- Cena " << idCenaAtual << " ---\n" << endl;
 		cout << cena.getTextoDaHistoria() << endl;
 
-		if (cena.eUmaBatalha()) {
+		if (cena.ehUmaBatalha()) {
 			iniciarBatalha();
 		}
 		else {
@@ -35,7 +36,7 @@ void Jogo::iniciarJogo() {
 		}
 	}
 }
-}
+
 
 void Jogo::mostrarOpcoesEProcessarEscolha() {
 	map<int, string> opcoes = cena.getOpcoes();
@@ -155,7 +156,7 @@ void Jogo::mostrarTelaDeAbertura() {
 			arquivoDeSave << jogador.getEnergia() << endl;
 			arquivoDeSave << jogador.getEnergiaMax() << endl;
 			arquivoDeSave << jogador.getSorte() << endl;
-			arquivoDeSave << jogador.getProvisoes() << endl;
+			arquivoDeSave << jogador.get_provisoes_atuais() << endl;
 			arquivoDeSave << jogador.getTesouro() << endl;
 
 			//Salva o estado do jogo
@@ -169,14 +170,14 @@ void Jogo::mostrarTelaDeAbertura() {
 			arquivoDeSave << endl; // pula linha depois do for 
 
 			// 5. Salva o inventario completo, um item por linha
-			vector<Item> inventario = jogador.getInventario();
+			vector<Item> inventario = jogador.get_inventario();
 			for (auto item : inventario) {
 				// Escreve cada item no formato: nome;tipo;combate;fa;dano
-				arquivoDeSave << item.getNome() << ";"
-					<< item.getTipoDeItem() << ";"
-					<< item.getPodeEmCombate() << ";"
-					<< item.getFa() << ";"
-					<< item.getDano() << endl;
+				arquivoDeSave << item.get_nome() << ";"
+					<< item.get_tipo() << ";"
+					<< item.get_combate() << ";"
+					<< item.get_FA() << ";"
+					<< item.get_dano() << endl;
 			}
 
 			// 6. Fecha o arquivo para garantir que tudo foi salvo
@@ -246,7 +247,7 @@ void Jogo::mostrarTelaDeAbertura() {
 			getline(ss_item, parte_item, ';'); dano = stoi(parte_item);
 
 			Item itemCarregado(nome, tipo, podeCombate, fa, dano);
-			jogador.adicionarItem(itemCarregado);
+			jogador.adiciona_item(itemCarregado);
 		}
 
 		arquivoDeSave.close();
@@ -258,4 +259,55 @@ void Jogo::mostrarTelaDeAbertura() {
 		cin.get();
 
 		return true; // Retorna 'true' para indicar que o carregamento foi um sucesso
+	}
+
+	void Jogo::criarNovoPersonagem() {
+		int pontos_disponiveis = 12;
+		cout << "Vamos distribuir seus 12 pontos! " << endl;
+
+		string escolha;
+		int quantidade;
+		int contador;
+
+		while(pontos_disponiveis >0) {
+
+			cout <<"Você tem" << pontos_disponiveis << "pontos disponíveis." << endl;
+			cout << "Você quer incrementar seus pontos em sorte, habilidade ou energia? " << endl;
+			cin >> escolha;
+
+			cout << "Quantos pontos voce deseja incrementar? " << endl;
+			cin >> quantidade;
+
+			if (quantidade > pontos_disponiveis) {
+				cout << "Voce nao tem essa quantidade de pontos disponiveis. Tente novamente. " << endl;
+				continue;
+			}
+
+			if (escolha == "sorte") {
+				int valorAtual = jogador.getSorte(); // pega a sorte atual
+				jogador.setSorte(valorAtual + quantidade); // seta a sorte atual como a antiga + a quantidade de agora
+			}
+			if (escolha == "habilidade") {
+				int valorAtual = jogador.getHabilidade();
+				jogador.setHabilidade(valorAtual + quantidade);
+			}
+			else if (escolha == "energia") {
+				int valorAtual = jogador.getEnergia();
+				jogador.setEnergia(valorAtual + quantidade);
+				// atualiza a energia máxima
+				jogador.setEnergiaMax(valorAtual + quantidade);
+			}
+			else {
+				cout << "\nAtributo invalido! Tente novamente." << endl;
+				continue; // pula a dedução de pontos se a escolha foi inválida
+			}
+
+			// subtrai os pontos apenas se a escolha foi válida
+			pontos_disponiveis -= quantidade;
+		}
+		cout << "\n--- Personagem Criado! ---" << endl;
+		cout << "Habilidade Final: " << jogador.getHabilidade() << endl;
+		cout << "Energia Final: " << jogador.getEnergia() << endl;
+		cout << "Sorte Final: " << jogador.getSorte() << endl;
+		cout << "------------------------------------------" << endl;
 	}

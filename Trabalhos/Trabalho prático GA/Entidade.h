@@ -26,7 +26,7 @@ public:
     void setEnergiaMax(int novaEnergiaMax); // precisa para o carregarJogo()
 
 
-private:
+protected:
 	string nome;
     int habilidade;
     int energia;          

@@ -5,20 +5,25 @@
 
 
 Jogador::Jogador() { // construtor vazio com atributos válidos
-	energia_atual_jogador = 12;
-	sorte_atual_jogador = 6;
-	habilidade_jogador = 6;
+	energia = 12;
+	sorte  = 6;
+	habilidade = 6;
 	provisoes_atual_jogador = 0;
 }
 
-Jogador::Jogador(int energia, int sorte, int habilidade, int provisoes) { // construtor que vai ser chamado após a definição da distribuição dos pontos
-	energia_atual_jogador = energia_maxima_jogador = energia;
-	sorte_atual_jogador = sorte_maxima_jogador = sorte;
-	habilidade_jogador = habilidade;
+Jogador::Jogador(int energy, int luck, int hability, int provisoes) { // construtor que vai ser chamado após a definição da distribuição dos pontos
+	energia = energy;
+	energiaMaxima = 24;
+	sorte = luck;
+	habilidade = hability;
 	provisoes_atual_jogador = provisoes;
 }
 
 Jogador::~Jogador(){}
+
+vector<Item> Jogador::get_inventario() {
+	return inventario;
+}
 
 int Jogador::get_provisoes_atuais(){
 	return provisoes_atual_jogador;
@@ -33,12 +38,12 @@ int Jogador::calcular_FA() {
 }
 
 bool Jogador::testar_sorte() {
-	sorte_atual_jogador--; // diminui uma unidade da sorte, já que está sendo utilizada
+	sorte--; // diminui uma unidade da sorte, já que está sendo utilizada
 	int rolagem_sorte1 = (rand() % 7); //gera um número aleatório 1 a 6
 	int rolagem_sorte2 = (rand() % 7); //gera outro número aleatório 1 a 6
 	int rolagem_sorte_final = rolagem_sorte1 + rolagem_sorte2; // soma as duas rolagens. esse é o número que vamos comparar com a sorte do jogador
 
-	if (sorte_atual_jogador >= rolagem_sorte_final)
+	if (sorte >= rolagem_sorte_final)
 		return true;
 	else
 		return false;
@@ -47,9 +52,9 @@ bool Jogador::testar_sorte() {
 bool Jogador::usar_provisao() {
 	if (provisoes_atual_jogador >= 1) { // se o jogador tiver pelo menos uma provisão
 		provisoes_atual_jogador--; // subtrai 1 provisão
-		energia_atual_jogador += 4; //e aumenta 4 pontos de vida
-		if (energia_atual_jogador > energia_maxima_jogador)
-			energia_atual_jogador = energia_maxima_jogador;
+		energia += 4; //e aumenta 4 pontos de vida
+		if (energia > energiaMaxima)
+			energia = energiaMaxima;
 		return true;//a operação foi um sucesso!
 	}
 	else //provisões insuficientes, não foi possível efetuar a transação
@@ -96,11 +101,10 @@ void Jogador::equipar_item(int indice_do_item) { // troca entre o inventário e o
 		else
 			cout <<endl << item_para_equipar.get_nome() << "não é um item equipável" << endl;
 	}
-
 }
 
 void Jogador::setProvisoes(int quantidade) {
-	provisoes = quantidade;
+	provisoes_atual_jogador = quantidade;
 }
 
 void Jogador::setTesouro(int quantidade) {
@@ -111,3 +115,6 @@ void Jogador::limparInventario() {
 	inventario.clear(); // O metodo .clear() esvazia um vector
 }
 
+int Jogador::getTesouro() {
+	return tesouro;
+}

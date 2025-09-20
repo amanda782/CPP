@@ -9,7 +9,7 @@ Entidade::Entidade() {
 }
 Entidade::Entidade(string name, int ability, int energy, int luck) {
 	nome = name;
-	habilidade = ability;
+	habilidade = ability = 6;
 	energiaMaxima = energy;
 	energia = energiaMaxima;
 	sorte = luck;
@@ -59,7 +59,15 @@ void Entidade::setEnergia(int novaEnergia) {
 }
 
 void Entidade::setSorte(int novaSorte) {
-	sorte = novaSorte;
+	// A responsabilidade desta função é definir o valor da sorte
+	// Regras complexas são responsabilidade da lógica do jogo
+	// A única validação importante aqui é garantir que o atributo não fique negativo
+	if (novaSorte < 6) {
+		sorte = 6;
+	}
+	else {
+		sorte = novaSorte;
+	}
 }
 
 void Entidade::setEnergiaMax(int novaEnergiaMax) {
