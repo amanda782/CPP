@@ -268,6 +268,7 @@ void Jogo::mostrarTelaDeAbertura() {
 		string escolha;
 		int quantidade;
 		int contador;
+		int sobra; // armazena os pontos que podem ultrapassar o limite. 
 
 		while(pontos_disponiveis >0) {
 
@@ -283,20 +284,15 @@ void Jogo::mostrarTelaDeAbertura() {
 				continue;
 			}
 
-			if (escolha == "sorte") {
-				int valorAtual = jogador.getSorte(); // pega a sorte atual
-				jogador.setSorte(valorAtual + quantidade); // seta a sorte atual como a antiga + a quantidade de agora
-			}
-			if (escolha == "habilidade") {
-				int valorAtual = jogador.getHabilidade();
-				jogador.setHabilidade(valorAtual + quantidade);
-			}
-			else if (escolha == "energia") {
-				int valorAtual = jogador.getEnergia();
-				jogador.setEnergia(valorAtual + quantidade);
-				// atualiza a energia máxima
-				jogador.setEnergiaMax(valorAtual + quantidade);
-			}
+			if (escolha == "sorte") 
+				sobra = jogador.ajustarSorte(quantidade); // incrementa QUANTIDADE pontos em sorte
+
+			if (escolha == "habilidade") 
+				sobra = jogador.ajustarHabilidade(quantidade); // incrementa QUANTIDADE pontos em habilidade
+			
+			else if (escolha == "energia") 
+				sobra = jogador.ajustarEnergia(quantidade); // incrementa QUANTIDADE pontos em energia
+			
 			else {
 				cout << "\nAtributo invalido! Tente novamente." << endl;
 				continue; // pula a dedução de pontos se a escolha foi inválida
@@ -304,6 +300,7 @@ void Jogo::mostrarTelaDeAbertura() {
 
 			// subtrai os pontos apenas se a escolha foi válida
 			pontos_disponiveis -= quantidade;
+			pontos_disponiveis += sobra; // adiciona os pontos que nao foram incrementados pois passaram do limite (pode ser zero)
 		}
 		cout << "\n--- Personagem Criado! ---" << endl;
 		cout << "Habilidade Final: " << jogador.getHabilidade() << endl;

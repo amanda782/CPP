@@ -12,10 +12,10 @@ Jogador::Jogador() { // construtor vazio com atributos válidos
 }
 
 Jogador::Jogador(int energy, int luck, int hability, int provisoes) { // construtor que vai ser chamado após a definição da distribuição dos pontos
-	energia = energy;
+	energia = energy = 12;
 	energiaMaxima = 24;
-	sorte = luck;
-	habilidade = hability;
+	sorte = luck = 6;
+	habilidade = hability = 6;
 	provisoes_atual_jogador = provisoes;
 }
 

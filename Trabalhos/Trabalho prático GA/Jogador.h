@@ -29,9 +29,6 @@ public: // pra construir o jogador, precisamos definir a distribuição de pontos 
 	void adiciona_provisao(int quantidade_provisoes);
 	void equipar_item(int ponteiro_do_item); // recebe a posição do item no vetor inventário
 
-	void set_sorte_maxima_jogador(int sorte);
-	void set_energia_maxima_jogador(int energia);
-	void set_habilidade_jogador(int habilidade);
 	void setProvisoes(int quantidade);
 	void setTesouro(int quantidade);
 	void limparInventario(); // Para esvaziar o inventario antes de carregar um novo
