@@ -32,6 +32,5 @@ protected:
     int energia;          
     int energiaMaxima;    
     int sorte; 
-    int energiaMax = 24;
 
 };
