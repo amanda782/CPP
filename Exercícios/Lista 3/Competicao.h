@@ -2,22 +2,21 @@
 #include <iostream>
 #include <string>
 #include "Data.h"
-#include "Atleta.h"
 
 using namespace std;
 
 class Competicao {
 public:
 	Competicao();
-	Competicao(string nome, Data date);
+	Competicao(string nome_comp, Data data);
 	~Competicao();
 
-	//metodos:
 	void imprime_data_comp();
-	string get_nome();
-	Data get_data();
+	string get_nome_comp();
+	Data get_data_comp();
 
 private:
-	string nome_competicao;
-	Data data_competicao;
+	string nome;
+	Data data_comp;
+
 };

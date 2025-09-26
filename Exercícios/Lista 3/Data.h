@@ -5,19 +5,18 @@
 using namespace std;
 
 class Data {
-	public:
-		Data();
-		Data(int dia, int mes, int ano);
-		~Data();
+public:
+	Data();
+	Data(int day, int month, int year);
+	~Data();
 
-		//metodos:
-		void imprime_data();
-		int get_dia();
-		int get_mes();
-		int get_ano();
+	void imprime_data();
+	int get_dia();
+	int get_mes();
+	int get_ano();
 
 private:
-	int d;
-	int m;
-	int a;
+	int dia;
+	int mes;
+	int ano;
 };

@@ -5,18 +5,17 @@
 using namespace std;
 
 class Atleta {
+public: 
 	Atleta();
-	Atleta(string nome, int idade);
+	Atleta(string nome_atleta, int idade_atleta);
 	~Atleta();
 
-	//metodos:
-	void imprime_info();
-	string get_nome_atleta();
-	int get_idade_atleta();
+	virtual void imprime_info();
+	string get_nome();
+	int get_idade();
 
 
 private:
-	string nome_do_atleta;
-	int idade_do_atleta;
-
+	string nome;
+	int idade;
 };

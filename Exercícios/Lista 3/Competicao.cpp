@@ -1,32 +1,24 @@
 #include "Competicao.h"
-#include "Data.h"
-#include "Atleta.h"
-
 
 Competicao::Competicao() {
-
+	nome = " ";
 }
 
-Competicao::Competicao(string nome, Data date) {
-	nome_competicao = nome;
-	data_competicao = date;
+Competicao::Competicao(string nome_comp, Data data) {
+	nome = nome_comp;
+	data_comp = data;
 }
 
-Competicao::~Competicao() {}
+Competicao::~Competicao(){}
 
 void Competicao::imprime_data_comp() {
-	cout << "Data da competicao: ";
-	data_competicao.imprime_data();
-
+	data_comp.imprime_data(); // sempre chama o metodo a partir do ATRIBUTO
 }
 
-string Competicao::get_nome() {
-	return nome_competicao;
+string Competicao::get_nome_comp() {
+	return nome; 
 }
 
-Data Competicao::get_data() {
-	return data_competicao;
+Data Competicao::get_data_comp() {
+	return data_comp;
 }
-
-
-

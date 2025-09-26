@@ -1,15 +1,19 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Data.h"
 #include "Atleta.h"
 
-using namespace std; 
+using namespace std;
 
-class Nadador:public Atleta {
+class Nadador :public Atleta {
 public:
-	//vamo la diva vc consegue, comecamos com heranca agora
+	Nadador();
+	Nadador(string nome_atleta, int idade_atleta, string categoria_nadador);
+	~Nadador();
+
+	void imprime_info();
+	string get_categoria();
+
 private:
-
-
+	string categoria;
 };
