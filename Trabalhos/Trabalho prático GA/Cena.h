@@ -18,6 +18,7 @@ public:
     bool ehUmaBatalha(); //expõe se é ou não 
     int getIdCenaVitoria();
     int getIdCenaDerrota();
+    int getIdCenaAtual();
     vector<Item> getItensEncontrados();
 
 private: 
@@ -27,5 +28,6 @@ private:
     bool ehBatalha; //guarda se é ou não 
     int idCenaVitoria; // guarda os valores das cenas de vitoria, p ir dps
     int idCenaDerrota; // guarda o valor da cena de derrota, p ir dps 
+    int idCenaAtual; 
     vector<Item> itensEncontrados;
 };
