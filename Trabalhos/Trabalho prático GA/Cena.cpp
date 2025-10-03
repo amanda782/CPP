@@ -140,6 +140,10 @@ bool Cena::carregarCena(int numeroDaCena) {
 
 } 
 
+int Cena::getIdCenaAtual() {
+	return cenaAtual;
+}
+
 bool Cena::ehUmaBatalha() {
 	return ehBatalha;
 }
