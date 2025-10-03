@@ -21,6 +21,7 @@ public:
     void mostrarTelaDeCreditos(); //julie 
     void salvarJogo(); //julie
     bool carregarJogo();// julie
+    void exibir_status_jogador();
 
 
 private:

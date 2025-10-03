@@ -10,13 +10,14 @@ using namespace std;
 class Jogador: public Entidade {
 public: // pra construir o jogador, precisamos definir a distribuição de pontos no MAIN
 	Jogador();
-	Jogador(int energia, int sorte, int habilidade, int provisoes);
+	Jogador(string name,int energia, int sorte, int habilidade, int provisoes);
 	~Jogador();
 
 	//metodos de acesso:
 	int get_provisoes_atuais();
 	vector<Item> get_inventario();
 	int getTesouro();
+	void imprime_inventario();
 
 
 	//metodos de ataque:
@@ -28,10 +29,10 @@ public: // pra construir o jogador, precisamos definir a distribuição de pontos 
 	void adiciona_item(Item novo_item);
 	void adiciona_provisao(int quantidade_provisoes);
 	void equipar_item(int ponteiro_do_item); // recebe a posição do item no vetor inventário
+	bool usar_sorte();
+	int ampliar_dano(int dano_ampliar);
+	int reduzir_dano(int dano_reduzir);
 
-	void set_sorte_maxima_jogador(int sorte);
-	void set_energia_maxima_jogador(int energia);
-	void set_habilidade_jogador(int habilidade);
 	void setProvisoes(int quantidade);
 	void setTesouro(int quantidade);
 	void limparInventario(); // Para esvaziar o inventario antes de carregar um novo

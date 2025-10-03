@@ -18,11 +18,15 @@ public:
     int getEnergia();
     int getEnergiaMax();
     int getSorte();
+    void setHabilidade(int hability);
+    void setEnergia(int energy);
+    void setSorte(int luck);
+
     virtual int calcular_FA();
     void setNome(string novoNome);
-    void setHabilidade(int novaHabilidade);
-    void setEnergia(int novaEnergia);
-    void setSorte(int novaSorte);
+    int ajustarHabilidade(int quantidade);
+    int ajustarEnergia(int quantidade);
+    int ajustarSorte(int novaSorte);
     void setEnergiaMax(int novaEnergiaMax); // precisa para o carregarJogo()
 
 
@@ -31,6 +35,6 @@ protected:
     int habilidade;
     int energia;          
     int energiaMaxima;    
-    int sorte;            
+    int sorte; 
 
 };

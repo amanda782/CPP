@@ -2,17 +2,17 @@
 
 Entidade::Entidade() {
 	nome = "";
-	habilidade = 0;
-	sorte = 0;
-	energia = 0;
+	habilidade = 6;
+	sorte = 6;
+	energia = 12;
 	energiaMaxima = 0;
 }
 Entidade::Entidade(string name, int ability, int energy, int luck) {
 	nome = name;
 	habilidade = ability = 6;
-	energiaMaxima = energy;
+	energiaMaxima = energy = 12;
 	energia = energiaMaxima;
-	sorte = luck;
+	sorte = luck = 6;
 }
 
 Entidade::~Entidade() {}
@@ -50,24 +50,47 @@ void Entidade::setNome(string novoNome) {
 	nome = novoNome;
 }
 
-void Entidade::setHabilidade(int novaHabilidade) {
-	habilidade = novaHabilidade;
-}
-
-void Entidade::setEnergia(int novaEnergia) {
-	energia = novaEnergia;
-}
-
-void Entidade::setSorte(int novaSorte) {
-	// A responsabilidade desta função é definir o valor da sorte
-	// Regras complexas são responsabilidade da lógica do jogo
-	// A única validação importante aqui é garantir que o atributo não fique negativo
-	if (novaSorte < 6) {
-		sorte = 6;
+int Entidade::ajustarHabilidade(int quantidade) {
+	habilidade += quantidade;
+	if (habilidade > 12) {
+		cout << "A habilidade ultrapassou o limite. Agora, voce possui 12 pontos de habilidade." << endl << endl;
+		int habilidade_ultrapassada = habilidade; // salva o valor total, com a soma ultrapassando o limite
+		habilidade = 12; // define a habilidade como maxima (12)
+		return habilidade_ultrapassada - 12; // retorna a quantidade de pontos nao utilizados
 	}
 	else {
-		sorte = novaSorte;
+		cout << "Habilidade redefinida. Agora voce possui " << habilidade << " pontos de habilidade." << endl << endl;//imprime a habilidade atual
+		return 0; // nao sobrou nenhum ponto não utilizado
 	}
+}
+
+int Entidade::ajustarEnergia(int quantidade) {
+	energia += quantidade;
+	if (energia > 24) {
+		cout << "A energia ultrapassou o limite. Agora, voce possui 24 pontos de energia." << endl << endl;
+		int energia_ultrapassada = energia; // salva o valor total, com a soma ultrapassando o limite
+		energia = 24; // define a energia como maxima (24)
+		return energia_ultrapassada - 24; // retorna a quantidade de pontos nao utilizados
+	}
+	else {
+		cout << "Energia redefinida. Agora voce possui " << energia << " pontos de energia." << endl << endl; //imprime a energia atual
+		return 0; // nao sobrou nenhum ponto não utilizado
+	}
+}
+
+int Entidade::ajustarSorte(int quantidade) {
+	sorte += quantidade; // adiciona a quantidade especificada pelo player na classe jogo
+	if (sorte > 12) {
+		cout << "A sorte ultrapassou o limite. Agora, voce possui 12 pontos de sorte." << endl << endl;
+		int sorte_ultrapassada = sorte; // salva o valor total, com a soma ultrapassando o limite
+		sorte = 12; // define a sorte como maxima (12)
+		return sorte_ultrapassada - 12; // retorna a quantidade de pontos nao utilizados
+	}
+	else {
+		cout << "Sorte redefinida. Agora voce possui " << sorte << " pontos de sorte." << endl << endl; //imprime a sorte atual
+		return 0; // nao sobrou nenhum ponto não utilizado
+	}
+	
 }
 
 void Entidade::setEnergiaMax(int novaEnergiaMax) {
@@ -79,3 +102,15 @@ int Entidade::calcular_FA() {
 	int forca_de_ataque = this->habilidade + rolagem_dado; //soma  a habilidade com a rolagem do dado
 	return forca_de_ataque;
  }
+
+void Entidade::setHabilidade(int hability) {
+	habilidade = hability;
+}
+
+void Entidade::setEnergia(int energy) {
+	energia = energy;
+}
+void Entidade::setSorte(int luck) {
+	sorte = luck;
+}
+

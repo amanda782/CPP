@@ -6,6 +6,10 @@
 #include <iostream>
 #include <fstream> 
 #include <vector>
+#include <sstream> // Essencial para o stringstream
+#include <limits>  // Para o cin.ignore
+#define NOMINMAX // windows estava interferindo nos macros, precisei definir aqui
+#include <windows.h> // para o sleep
 
 using namespace std;
 
@@ -37,6 +41,113 @@ void Jogo::iniciarJogo() {
 	}
 }
 
+void Jogo::iniciarBatalha() {
+	// Preparação:
+	Inimigo inimigo = cena.getInimigo(); // Pega uma cópia do inimigo da cena atual
+	Sleep(5000); //pausa por 5segundos antes de limpar a tela pra batalha
+	system("cls"); // Limpa a tela
+	cout << "!!! BATALHA !!!" << endl;
+	cout << "Voce encontrou um " << inimigo.getNome() << "!" << endl;
+	cout << "------------------------------------------" << endl;
+	cout << "INIMIGO -> Habilidade: " << inimigo.getHabilidade() << " | Energia: " << inimigo.getEnergia() << endl; //
+	cout << "VOCE    -> Habilidade: " << jogador.getHabilidade() << " | Energia: " << jogador.getEnergia() << endl; //
+	cout << "------------------------------------------" << endl;
+	cout << "Pressione Enter para comecar o combate...";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.get();
+
+	// Combate por rodada:
+	while (jogador.estaVivo() && inimigo.estaVivo()) { // Loop continua enquanto ambos estiverem vivos
+		system("cls");
+		cout << "--- NOVA RODADA ---" << endl;
+		cout << "Energia do Inimigo: " << inimigo.getEnergia() << endl;
+		cout << "Sua Energia: " << jogador.getEnergia() << endl;
+		cout << "------------------------------------------" << endl;
+		cout << "Pressione Enter para atacar...";
+		cin.get();
+
+		// Calcula a Força de Ataque para ambos
+		int fa_jogador = jogador.calcular_FA(); 
+		int fa_inimigo = inimigo.calcular_FA(); 
+
+		cout << "Sua Forca de Ataque: " << fa_jogador << endl;
+		cout << "Forca de Ataque do Inimigo: " << fa_inimigo << endl;
+		cout << "------------------------------------------" << endl;
+		string answer_dano;//armazena a resposta da sorte
+
+		// Compara as Forças de Ataque e aplica o dano
+		if (fa_jogador > fa_inimigo) {
+			cout << "Voce venceu a rodada e causou 2 de dano!" << endl;
+			cout << "Caso voce queira usar a sorte para tentar dobrar o dano, digite \"sim\. Caso queira acessar os atributos do jogador, digite \"inventario\". Caso queira prosseguir, digite qualquer outra coisa." << endl;
+			
+			cin >> answer_dano;
+			if (answer_dano == "sim")  // caso queira testar a sorte
+				inimigo.receberDano(jogador.ampliar_dano(2)); // chama a funcao de receber dano junto com  a de testar a sorte
+			else if (answer_dano == "inventario")
+				jogador.imprime_inventario();
+			else
+				inimigo.receberDano(2); 
+		}
+		else if (fa_inimigo > fa_jogador) {
+			cout << "O inimigo venceu a rodada e voce sofreu 2 de dano!" << endl;
+			cout << "Caso voce queira usar a sorte para tentar reduzir o dano, digite \"sim\". Caso queira acessar os atributos do jogador, digite \"inventario\". Caso queira prosseguir, digite qualquer outra coisa. " << endl;
+			cin >> answer_dano;
+			if (answer_dano == "sim")
+				jogador.receberDano(jogador.reduzir_dano(2));
+			else if (answer_dano == "inventario")
+				jogador.imprime_inventario();
+			else
+				jogador.receberDano(2); 
+		}
+		else {
+			cout << "Empate! Ninguem se feriu nesta rodada." << endl;
+		}
+
+		cout << "Pressione Enter para a proxima rodada...";
+		cin.get();
+	}
+
+	//Resultado da batalha:
+	system("cls");
+	cout << "--- FIM DA BATALHA ---" << endl;
+
+	if (jogador.estaVivo()) { // Jogador venceu
+		cout << "Voce derrotou o " << inimigo.getNome() << "!" << endl << endl;
+
+		// Coleta de recompensas
+		int tesouro_ganho = inimigo.getTesouroDeixado(); 
+		if (tesouro_ganho > 0) {
+			cout << "Voce encontrou " << tesouro_ganho << " pecas de tesouro!" << endl;
+			jogador.setTesouro(jogador.getTesouro() + tesouro_ganho); 
+		}
+
+		int provisao_ganha = inimigo.getProvisoesDeixadas(); 
+		if (provisao_ganha > 0) {
+			cout << "Voce encontrou " << provisao_ganha << " provisao(oes)!" << endl;
+			jogador.adiciona_provisao(provisao_ganha); 
+		}
+
+		Item item_ganho = inimigo.getItemDeixado(); 
+		if (item_ganho.get_nome() != "Item vazio") { // Verifica se é um item válido
+			cout << "O inimigo deixou cair um item: " << item_ganho.get_nome() << endl;
+			jogador.adiciona_item(item_ganho); 
+		}
+
+		// Avança para a cena de vitória
+		idCenaAtual = cena.getIdCenaVitoria(); 
+
+	}
+	else { // Jogador foi derrotado
+		cout << "Voce foi derrotado pelo " << inimigo.getNome() << "..." << endl;
+
+		// Avança para a cena de derrota
+		idCenaAtual = cena.getIdCenaDerrota(); 
+	}
+
+	cout << "\n------------------------------------------" << endl;
+	cout << "Pressione Enter para continuar sua jornada...";
+	cin.get();
+}
 
 void Jogo::mostrarOpcoesEProcessarEscolha() {
 	map<int, string> opcoes = cena.getOpcoes();
@@ -187,10 +298,7 @@ void Jogo::mostrarTelaDeAbertura() {
 			cout << "ERRO: Nao foi possivel criar o arquivo de salvamento." << endl;
 		}
 	}
-#include <fstream>
-#include <sstream> // Essencial para o stringstream
-#include <iostream>
-#include <limits>  // Para o cin.ignore
+
 
 	bool Jogo::carregarJogo() {
 		//  Tenta abrir o arquivo "save.txt" para leitura
@@ -263,51 +371,62 @@ void Jogo::mostrarTelaDeAbertura() {
 
 	void Jogo::criarNovoPersonagem() {
 		int pontos_disponiveis = 12;
-		cout << "Vamos distribuir seus 12 pontos! " << endl;
+		cout << "Vamos distribuir seus 12 pontos! " << endl << endl << endl;
 
 		string escolha;
 		int quantidade;
-		int contador;
+		int sobra; // armazena os pontos que podem ultrapassar o limite. 
 
 		while(pontos_disponiveis >0) {
 
-			cout <<"Você tem" << pontos_disponiveis << "pontos disponíveis." << endl;
-			cout << "Você quer incrementar seus pontos em sorte, habilidade ou energia? " << endl;
+			cout <<"Voce tem " << pontos_disponiveis << " pontos disponiveis." << endl;
+			cout << "Voce quer incrementar seus pontos em sorte, habilidade ou energia? " << endl << endl;
 			cin >> escolha;
 
-			cout << "Quantos pontos voce deseja incrementar? " << endl;
+			cout << "Quantos pontos voce deseja incrementar? " << endl << endl;
 			cin >> quantidade;
 
-			if (quantidade > pontos_disponiveis) {
-				cout << "Voce nao tem essa quantidade de pontos disponiveis. Tente novamente. " << endl;
+			// limpa o buffer de entrada para evitar erros na próxima leitura
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+			if (quantidade <= 0 || quantidade > pontos_disponiveis) {
+				cout << "Quantidade invalida. Tente novamente." << endl << endl;
 				continue;
 			}
 
-			if (escolha == "sorte") {
-				int valorAtual = jogador.getSorte(); // pega a sorte atual
-				jogador.setSorte(valorAtual + quantidade); // seta a sorte atual como a antiga + a quantidade de agora
-			}
-			if (escolha == "habilidade") {
-				int valorAtual = jogador.getHabilidade();
-				jogador.setHabilidade(valorAtual + quantidade);
-			}
-			else if (escolha == "energia") {
-				int valorAtual = jogador.getEnergia();
-				jogador.setEnergia(valorAtual + quantidade);
-				// atualiza a energia máxima
-				jogador.setEnergiaMax(valorAtual + quantidade);
-			}
+			if (escolha == "sorte") 
+				sobra = jogador.ajustarSorte(quantidade); // incrementa QUANTIDADE pontos em sorte
+
+			else if (escolha == "habilidade") 
+				sobra = jogador.ajustarHabilidade(quantidade); // incrementa QUANTIDADE pontos em habilidade
+			
+			else if (escolha == "energia") 
+				sobra = jogador.ajustarEnergia(quantidade); // incrementa QUANTIDADE pontos em energia
+			
 			else {
-				cout << "\nAtributo invalido! Tente novamente." << endl;
+				cout << "\nAtributo invalido! Tente novamente." << endl << endl;
 				continue; // pula a dedução de pontos se a escolha foi inválida
 			}
 
 			// subtrai os pontos apenas se a escolha foi válida
 			pontos_disponiveis -= quantidade;
+			pontos_disponiveis += sobra; // adiciona os pontos que nao foram incrementados pois passaram do limite (pode ser zero)
 		}
+		jogador.setEnergiaMax(jogador.getEnergia()); // seta a energia atual como maxima
+
 		cout << "\n--- Personagem Criado! ---" << endl;
 		cout << "Habilidade Final: " << jogador.getHabilidade() << endl;
 		cout << "Energia Final: " << jogador.getEnergia() << endl;
 		cout << "Sorte Final: " << jogador.getSorte() << endl;
 		cout << "------------------------------------------" << endl;
+		cout << "Pressione Enter para comecar a aventura...";
+		cin.get(); // pausa para o jogador ler os status antes do jogo começar
+	}
+
+	void Jogo::exibir_status_jogador() {
+		cout << "\n--- STATUS FINAL DO PERSONAGEM ---" << endl;
+		cout << "Habilidade: " << jogador.getHabilidade() << endl;
+		cout << "Energia: " << jogador.getEnergia() << " / " << jogador.getEnergiaMax() << endl;
+		cout << "Sorte: " << jogador.getSorte() << endl;
+		cout << "------------------------------------" << endl;
 	}

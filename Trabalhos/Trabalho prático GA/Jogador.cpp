@@ -2,21 +2,18 @@
 #include "Entidade.h"
 #include <cstdlib> // Para as funções srand() e rand()
 #include <ctime>   // Para a função time()
+#define NOMINMAX // windows estava interferindo nos macros, precisei definir aqui
+#include <windows.h> // para o sleep
 
 
 Jogador::Jogador() { // construtor vazio com atributos válidos
-	energia = 12;
-	sorte  = 6;
-	habilidade = 6;
 	provisoes_atual_jogador = 0;
+	tesouro = 0;
 }
 
-Jogador::Jogador(int energy, int luck, int hability, int provisoes) { // construtor que vai ser chamado após a definição da distribuição dos pontos
-	energia = energy;
-	energiaMaxima = 24;
-	sorte = luck;
-	habilidade = hability;
+Jogador::Jogador(string name, int energy, int luck, int hability, int provisoes) :Entidade(name, hability, energy, luck) { // construtor que vai ser chamado após a definição da distribuição dos pontos
 	provisoes_atual_jogador = provisoes;
+	tesouro = 0;
 }
 
 Jogador::~Jogador(){}
@@ -27,6 +24,14 @@ vector<Item> Jogador::get_inventario() {
 
 int Jogador::get_provisoes_atuais(){
 	return provisoes_atual_jogador;
+}
+void Jogador::imprime_inventario() {
+	cout << "Nome do jogador: " << nome << endl;
+	cout << "Habilidade do jogador: " << habilidade << endl;
+	cout << "Sorte do jogador: " << sorte << endl;
+	cout << "Energia do jogador: " << energia << endl;
+	cout << "Provisoes do jogador:" << provisoes_atual_jogador << endl;
+	Sleep(5000);
 }
 
 int Jogador::calcular_FA() {
@@ -39,14 +44,20 @@ int Jogador::calcular_FA() {
 
 bool Jogador::testar_sorte() {
 	sorte--; // diminui uma unidade da sorte, já que está sendo utilizada
-	int rolagem_sorte1 = (rand() % 7); //gera um número aleatório 1 a 6
-	int rolagem_sorte2 = (rand() % 7); //gera outro número aleatório 1 a 6
+	int rolagem_sorte1 = (rand() % 6) +1 ; //gera um número aleatório 1 a 6
+	int rolagem_sorte2 = (rand() % 6) + 1; //gera outro número aleatório 1 a 6
 	int rolagem_sorte_final = rolagem_sorte1 + rolagem_sorte2; // soma as duas rolagens. esse é o número que vamos comparar com a sorte do jogador
+	cout << "Numero sorteado: " << rolagem_sorte_final << endl;
+	cout << "Seu numero de sorte:" << sorte << endl;
 
-	if (sorte >= rolagem_sorte_final)
+	if (sorte >= rolagem_sorte_final) {
+		cout << "A sorte esta do seu lado! Dano reduzido em 2x." << endl;
 		return true;
-	else
+	}
+	else {
+		cout << "Mais sorte na proxima. Infelizmente nao foi dessa vez :( " << endl;
 		return false;
+	}
 }
 
 bool Jogador::usar_provisao() {
@@ -117,4 +128,36 @@ void Jogador::limparInventario() {
 
 int Jogador::getTesouro() {
 	return tesouro;
+}
+
+bool Jogador::usar_sorte() {
+	if (sorte > 0) {
+		sorte--;
+		return true;
+	}
+	else {
+		cout << "Voce nao possui pontos de sorte disponiveis." << endl;
+		return false;
+	}
+}
+
+int Jogador::ampliar_dano( int dano_ampliar) {
+	bool sorteado = usar_sorte();
+	if (sorteado) {
+		dano_ampliar = dano_ampliar * 2;
+		cout << "A sorte esta do seu lado! Dano ampliado em 2x." << endl;
+	}
+	else
+		cout << "Mais sorte na proxima. Infelizmente nao foi dessa vez :( " << endl;
+
+	return dano_ampliar;
+}
+
+int Jogador::reduzir_dano(int dano_reduzir) {
+	bool good_luck = usar_sorte();
+	if (good_luck) {
+		dano_reduzir = dano_reduzir / 2;
+		
+	}
+	return dano_reduzir;
 }
