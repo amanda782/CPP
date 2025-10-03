@@ -26,7 +26,7 @@ int Jogador::get_provisoes_atuais(){
 	return provisoes_atual_jogador;
 }
 void Jogador::imprime_inventario() {
-	cout << "Nome do jogador: " << nome << endl;
+	cout << endl << "Nome do jogador: " << nome << endl;
 	cout << "Habilidade do jogador: " << habilidade << endl;
 	cout << "Sorte do jogador: " << sorte << endl;
 	cout << "Energia do jogador: " << energia << endl;
@@ -52,10 +52,12 @@ bool Jogador::testar_sorte() {
 
 	if (sorte >= rolagem_sorte_final) {
 		cout << "A sorte esta do seu lado! Dano reduzido em 2x." << endl;
+		Sleep(5000);
 		return true;
 	}
 	else {
 		cout << "Mais sorte na proxima. Infelizmente nao foi dessa vez :( " << endl;
+		Sleep(5000);
 		return false;
 	}
 }

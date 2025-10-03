@@ -30,7 +30,7 @@ void Jogo::iniciarJogo() {
 		cena.carregarCena(idCenaAtual);
 
 		cout << "\n--- Cena " << idCenaAtual << " ---\n" << endl;
-		cout << cena.getTextoDaHistoria() << endl;
+		cout << cena.getTextoDaHistoria() <<   endl;
 
 		if (cena.ehUmaBatalha()) {
 			iniciarBatalha();
@@ -81,21 +81,29 @@ void Jogo::iniciarBatalha() {
 			cout << "Caso voce queira usar a sorte para tentar dobrar o dano, digite \"sim\. Caso queira acessar os atributos do jogador, digite \"inventario\". Caso queira prosseguir, digite qualquer outra coisa." << endl;
 			
 			cin >> answer_dano;
+
+			while (answer_dano == "inventario") {
+				jogador.imprime_inventario();
+				cout << "\nO que voce faz agora? (digite \"sim\" para usar a sorte ou qualquer outra coisa para prosseguir com o dano normal)" << endl;
+				cin >> answer_dano;
+			}
 			if (answer_dano == "sim")  // caso queira testar a sorte
 				inimigo.receberDano(jogador.ampliar_dano(2)); // chama a funcao de receber dano junto com  a de testar a sorte
-			else if (answer_dano == "inventario")
-				jogador.imprime_inventario();
 			else
 				inimigo.receberDano(2); 
 		}
 		else if (fa_inimigo > fa_jogador) {
 			cout << "O inimigo venceu a rodada e voce sofreu 2 de dano!" << endl;
 			cout << "Caso voce queira usar a sorte para tentar reduzir o dano, digite \"sim\". Caso queira acessar os atributos do jogador, digite \"inventario\". Caso queira prosseguir, digite qualquer outra coisa. " << endl;
+
 			cin >> answer_dano;
+			while (answer_dano == "inventario") {
+				jogador.imprime_inventario();
+				cout << "\nO que voce faz agora? (digite \"sim\" para usar a sorte ou qualquer outra coisa para prosseguir com o dano normal)" << endl;
+				cin >> answer_dano;
+			}
 			if (answer_dano == "sim")
 				jogador.receberDano(jogador.reduzir_dano(2));
-			else if (answer_dano == "inventario")
-				jogador.imprime_inventario();
 			else
 				jogador.receberDano(2); 
 		}
