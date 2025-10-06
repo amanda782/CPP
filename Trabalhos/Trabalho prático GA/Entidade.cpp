@@ -2,17 +2,19 @@
 
 Entidade::Entidade() {
 	nome = "";
-	habilidade = 6;
-	sorte = 6;
-	energia = 12;
+	habilidade = 0; //6
+	sorte = 0; //6
+	energia = 0; //12
 	energiaMaxima = 0;
+
+	//não dá pra fazer o inicio de ptos AQUI, porque se não os inimigos iniciarão igual jogador sempre. 
 }
 Entidade::Entidade(string name, int ability, int energy, int luck) {
 	nome = name;
-	habilidade = ability = 6;
-	energiaMaxima = energy = 12;
+	habilidade = ability;
+	energiaMaxima = energy;
 	energia = energiaMaxima;
-	sorte = luck = 6;
+	sorte = luck;
 }
 
 Entidade::~Entidade() {}

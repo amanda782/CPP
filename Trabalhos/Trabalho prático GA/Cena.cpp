@@ -10,6 +10,7 @@ Cena::Cena(){
 	ehBatalha = false;
 	idCenaVitoria = 0;
 	idCenaDerrota = 0;
+	idCenaAtual = 0; 
 }
 
 Cena::~Cena() {}
@@ -22,6 +23,7 @@ bool Cena::carregarCena(int numeroDaCena) {
 	ehBatalha = false;
 	idCenaVitoria = 0;
 	idCenaDerrota = 0;
+	ehUmTesteDeSorte = false;
 
 	//to_string é uma função padrão do C++ que converte um número (int) em uma string.
 	string nomeDoArquivo = to_string(numeroDaCena) + ".txt"; //numeroDaCena, vamos passar por parâemtro na classe jogo.
@@ -128,6 +130,9 @@ bool Cena::carregarCena(int numeroDaCena) {
 			// Pega a parte DEPOIS do ':' e converte para o ID da derrota
 			idCenaDerrota = stoi(linha.substr(pos_colon + 1));
 		}
+		else if (linha == "TESTE_DE_SORTE") {
+			ehUmTesteDeSorte = true;
+		}
 		else {
 			if (!linha.empty()) { // se a linha que eu li não é nada de cima e não está vazia
 				textoDaHistoria += linha + "\n"; // adiciono ao texto da história.
@@ -141,7 +146,7 @@ bool Cena::carregarCena(int numeroDaCena) {
 } 
 
 int Cena::getIdCenaAtual() {
-	return cenaAtual;
+	return idCenaAtual;
 }
 
 bool Cena::ehUmaBatalha() {
@@ -170,4 +175,8 @@ int Cena::getIdCenaVitoria() {
 
 vector<Item> Cena::getItensEncontrados() {
 	return itensEncontrados;
+}
+
+bool Cena::ehTesteDeSorte() {
+	return ehUmTesteDeSorte;
 }

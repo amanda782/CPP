@@ -6,7 +6,7 @@
 #include <windows.h> // para o sleep
 
 
-Jogador::Jogador() { // construtor vazio com atributos válidos
+Jogador::Jogador() :Entidade ("Harry Potter", 6, 12, 6) { // construtor vazio com atributos válidos
 	provisoes_atual_jogador = 0;
 	tesouro = 0;
 }

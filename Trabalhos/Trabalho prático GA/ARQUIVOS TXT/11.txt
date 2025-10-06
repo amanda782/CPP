@@ -1,0 +1,4 @@
+Voce se aproxima e ve que o frasco caido e, na verdade, uma embalagem azul e dourada. E um Sapo de Chocolate! Uma provisao util. Voce o guarda no seu inventario e volta para o corredor, seguindo em direcao a tapeçaria.
+
+I: Sapo de Chocolate;c;0;0;0
+#4: Continuar para a Sala Precisa.

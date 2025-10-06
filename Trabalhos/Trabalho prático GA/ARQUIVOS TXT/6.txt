@@ -1,0 +1,5 @@
+Com um grito de 'Riddikulus!', o Bicho-Papao assume uma forma comica e explode em uma nuvem de fumaca. O bau agora esta aberto, revelando seu conteudo. Voce encontrou uma provisao util e a guarda. Ao se levantar, voce ve que o corredor a frente se divide em dois caminhos.
+
+I: Sapo de Chocolate;c;0;0;0
+#12: Seguir pelo caminho da esquerda.
+#13: Seguir pelo caminho da direita.

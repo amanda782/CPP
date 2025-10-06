@@ -20,6 +20,7 @@ public:
     int getIdCenaDerrota();
     int getIdCenaAtual();
     vector<Item> getItensEncontrados();
+    bool ehTesteDeSorte();
 
 private: 
     string textoDaHistoria;
@@ -30,4 +31,6 @@ private:
     int idCenaDerrota; // guarda o valor da cena de derrota, p ir dps 
     int idCenaAtual; 
     vector<Item> itensEncontrados;
+    bool ehUmTesteDeSorte;
+
 };

@@ -27,19 +27,39 @@ void Jogo::iniciarJogo() {
 	mostrarTelaDeAbertura();
 
 	while (jogoRodando == true) {
-		cena.carregarCena(idCenaAtual);
+		if (cena.carregarCena(idCenaAtual)) {
+			cenasVisitadas.push_back(idCenaAtual); // Pegue o número da cena atual e adicione-o ao final da lista de cenas visitadas.
+			salvarJogo();
 
-		cout << "\n--- Cena " << idCenaAtual << " ---\n" << endl;
-		cout << cena.getTextoDaHistoria() <<   endl;
+			cout << "\n--- Cena " << idCenaAtual << " ---\n" << endl;
+			cout << cena.getTextoDaHistoria() << endl;
 
-		if (cena.ehUmaBatalha()) {
-			iniciarBatalha();
+			if (cena.ehUmaBatalha()) {
+				iniciarBatalha();
+			}
 		}
-		else {
-			mostrarOpcoesEProcessarEscolha();
+		else if (cena.ehTesteDeSorte()) {
+
+			cout << "\nVoce se depara com um desafio e precisa testar sua sorte!" << endl;
+			cout << "Pressione Enter para rolar os dados...";
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cin.get();
+
+			if (jogador.testar_sorte()) { // Chama o metodo do jogador que ja existe
+				cout << "Sucesso! Voce superou o obstaculo." << endl;
+				idCenaAtual = cena.getIdCenaVitoria(); // Pega o caminho do sucesso
+			}
+			else {
+				cout << "Falha! Voce nao teve sorte desta vez." << endl;
+				idCenaAtual = cena.getIdCenaDerrota(); // Pega o caminho da falha
+			}
+		}
+			else {
+				mostrarOpcoesEProcessarEscolha();
+			}
 		}
 	}
-}
+
 
 void Jogo::iniciarBatalha() {
 	// Preparação:
@@ -292,7 +312,8 @@ void Jogo::mostrarTelaDeAbertura() {
 			vector<Item> inventario = jogador.get_inventario();
 			for (auto item : inventario) {
 				// Escreve cada item no formato: nome;tipo;combate;fa;dano
-				arquivoDeSave << item.get_nome() << ";"
+				arquivoDeSave 
+					<< item.get_nome() << ";"
 					<< item.get_tipo() << ";"
 					<< item.get_combate() << ";"
 					<< item.get_FA() << ";"
@@ -378,6 +399,25 @@ void Jogo::mostrarTelaDeAbertura() {
 	}
 
 	void Jogo::criarNovoPersonagem() {
+
+		system("cls");
+		cout << "------------------------------------------" << endl;
+		cout << "      CRIACAO DE PERSONAGEM" << endl;
+		cout << "------------------------------------------" << endl << endl;
+
+		// Mostra as regras e os pontos iniciais para o jogador
+		cout << "Voce tem 12 pontos para distribuir entre seus atributos." << endl << endl;
+		cout << "Seus atributos iniciais (valores minimos) sao:" << endl;
+		// Pega os valores iniciais do objeto jogador, que foi criado com os minimos
+		cout << "Habilidade: " << jogador.getHabilidade() << " (Max: 12)" << endl;
+		cout << "Energia:    " << jogador.getEnergia() << " (Max: 24)" << endl;
+		cout << "Sorte:      " << jogador.getSorte() << " (Max: 12)" << endl << endl;
+
+		cout << "Pressione Enter para comecar a distribuir os pontos...";
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cin.get();
+		system("cls");
+
 		int pontos_disponiveis = 12;
 		cout << "Vamos distribuir seus 12 pontos! " << endl << endl << endl;
 

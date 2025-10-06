@@ -1,4 +1,0 @@
-Com um grito de 'Riddikulus!', o Bicho-Papao assume uma forma comica e explode em uma nuvem de fumaca. O bau agora esta aberto, revelando seu conteudo. Voce encontrou uma pocao valiosa.
-
-I: Pocao Wiggenweld;c;0;0;0
-#8: Pegar os itens e seguir pelo corredor que se abriu.
