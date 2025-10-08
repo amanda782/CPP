@@ -1,0 +1,10 @@
+A porta magica se abre com um rangido baixo. La dentro, a Sala Precisa se transformou em uma masmorra escura e umida. No centro da sala, um velho bau se mexe e treme violentamente. De la de dentro, sai um Bicho-Papao, que assume a forma do seu maior medo antes de avancar para te atacar!
+
+M: S
+N: Bicho-Papao
+H: 7
+E: 10
+S: 6
+P: 1
+I: Sapo de Chocolate;c;0;0;0
+6:7

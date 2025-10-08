@@ -1,0 +1,4 @@
+O corredor da esquerda e estreito e termina em uma parede de tijolos sem saida. Voce nota, no entanto, que dois tijolos parecem soltos, um vermelho e um azul.
+
+#8: Empurrar o tijolo vermelho.
+#14: Empurrar o tijolo azul.
