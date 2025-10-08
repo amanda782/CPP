@@ -9,7 +9,7 @@
 #include <sstream> // Essencial para o stringstream
 #include <limits>  // Para o cin.ignore
 #define NOMINMAX // windows estava interferindo nos macros, precisei definir aqui
-#include <windows.h> // para o sleep
+//#include <windows.h> // para o sleep
 
 using namespace std;
 
@@ -31,31 +31,32 @@ void Jogo::iniciarJogo() {
 			cenasVisitadas.push_back(idCenaAtual); // Pegue o número da cena atual e adicione-o ao final da lista de cenas visitadas.
 			salvarJogo();
 
-			cout << "\n--- Cena " << idCenaAtual << " ---\n" << endl;
-			cout << cena.getTextoDaHistoria() << endl;
+				cout << "\n--- Cena " << idCenaAtual << " ---\n" << endl;
+				cout << cena.getTextoDaHistoria() << endl;
 
-			if (cena.ehUmaBatalha()) {
+				if (cena.ehUmaBatalha()) {
 				iniciarBatalha();
-			}
-		}
-		else if (cena.ehTesteDeSorte()) {
+				}
 
-			cout << "\nVoce se depara com um desafio e precisa testar sua sorte!" << endl;
-			cout << "Pressione Enter para rolar os dados...";
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cin.get();
+				else if (cena.ehTesteDeSorte()) {
 
-			if (jogador.testar_sorte()) { // Chama o metodo do jogador que ja existe
-				cout << "Sucesso! Voce superou o obstaculo." << endl;
-				idCenaAtual = cena.getIdCenaVitoria(); // Pega o caminho do sucesso
-			}
-			else {
-				cout << "Falha! Voce nao teve sorte desta vez." << endl;
-				idCenaAtual = cena.getIdCenaDerrota(); // Pega o caminho da falha
-			}
-		}
-			else {
+				cout << "\nVoce se depara com um desafio e precisa testar sua sorte!" << endl;
+				cout << "Pressione Enter para rolar os dados...";
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cin.get();
+
+				if (jogador.testar_sorte()) { // Chama o metodo do jogador que ja existe
+					cout << "Sucesso! Voce superou o obstaculo." << endl;
+					idCenaAtual = cena.getIdCenaVitoria(); // Pega o caminho do sucesso
+				}
+				else {
+					cout << "Falha! Voce nao teve sorte desta vez." << endl;
+					idCenaAtual = cena.getIdCenaDerrota(); // Pega o caminho da falha
+					}
+				}
+				else {
 				mostrarOpcoesEProcessarEscolha();
+				}
 			}
 		}
 	}
@@ -64,7 +65,7 @@ void Jogo::iniciarJogo() {
 void Jogo::iniciarBatalha() {
 	// Preparação:
 	Inimigo inimigo = cena.getInimigo(); // Pega uma cópia do inimigo da cena atual
-	Sleep(5000); //pausa por 5segundos antes de limpar a tela pra batalha
+	//Sleep(5000); //pausa por 5segundos antes de limpar a tela pra batalha
 	system("cls"); // Limpa a tela
 	cout << "!!! BATALHA !!!" << endl;
 	cout << "Voce encontrou um " << inimigo.getNome() << "!" << endl;
@@ -99,8 +100,9 @@ void Jogo::iniciarBatalha() {
 		if (fa_jogador > fa_inimigo) {
 			cout << "Voce venceu a rodada e causou 2 de dano!" << endl;
 			cout << "Caso voce queira usar a sorte para tentar dobrar o dano, digite \"sim\. Caso queira acessar os atributos do jogador, digite \"inventario\". Caso queira prosseguir, digite qualquer outra coisa." << endl;
-			
 			cin >> answer_dano;
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
 
 			while (answer_dano == "inventario") {
 				jogador.imprime_inventario();
@@ -330,54 +332,48 @@ void Jogo::mostrarTelaDeAbertura() {
 
 
 	bool Jogo::carregarJogo() {
-		//  Tenta abrir o arquivo "save.txt" para leitura
 		ifstream arquivoDeSave("save.txt");
-				// Se nao conseguiu abrir (ex: o arquivo nao existe), avisa que falhou e retorna.
 		if (!arquivoDeSave.is_open()) {
 			return false;
 		}
 
-		// Variavel temporaria para ler cada linha
 		string linha;
 
-		getline(arquivoDeSave, linha); jogador.setHabilidade(stoi(linha));
-		getline(arquivoDeSave, linha); jogador.setEnergia(stoi(linha));
-		getline(arquivoDeSave, linha); jogador.setEnergiaMax(stoi(linha));
-		getline(arquivoDeSave, linha); jogador.setSorte(stoi(linha));
-		getline(arquivoDeSave, linha); jogador.setProvisoes(stoi(linha));
-		getline(arquivoDeSave, linha); jogador.setTesouro(stoi(linha));
+		// --- LEITURA SEGURA DOS ATRIBUTOS ---
+		// A logica agora e: TENTE ler uma linha, e SE conseguir E ela nao estiver vazia, converta.
+		if (getline(arquivoDeSave, linha) && !linha.empty()) jogador.setHabilidade(stoi(linha));
+		if (getline(arquivoDeSave, linha) && !linha.empty()) jogador.setEnergia(stoi(linha));
+		if (getline(arquivoDeSave, linha) && !linha.empty()) jogador.setEnergiaMax(stoi(linha));
+		if (getline(arquivoDeSave, linha) && !linha.empty()) jogador.setSorte(stoi(linha));
+		if (getline(arquivoDeSave, linha) && !linha.empty()) jogador.setProvisoes(stoi(linha));
+		if (getline(arquivoDeSave, linha) && !linha.empty()) jogador.setTesouro(stoi(linha));
+		if (getline(arquivoDeSave, linha) && !linha.empty()) idCenaAtual = stoi(linha);
 
-		// Le e define a cena onde o jogo deve continuar
-		getline(arquivoDeSave, linha); idCenaAtual = stoi(linha);
-
-		getline(arquivoDeSave, linha); // Le a linha inteira (ex: "1,4,5,")
-
-		stringstream ss_cenas(linha); // Usa um stringstream para quebrar a linha
-		string parte_cena;
-		cenasVisitadas.clear(); // Limpa o vetor de cenas visitadas antes de preencher
-
-		// Loop que le cada numero separado por virgula
-		while (getline(ss_cenas, parte_cena, ',')) {
-			if (!parte_cena.empty()) { // Garante que nao pegamos partes vazias
-				cenasVisitadas.push_back(stoi(parte_cena));
+		// --- LEITURA SEGURA DAS CENAS VISITADAS ---
+		if (getline(arquivoDeSave, linha) && !linha.empty()) {
+			stringstream ss_cenas(linha);
+			string parte_cena;
+			cenasVisitadas.clear();
+			while (getline(ss_cenas, parte_cena, ',')) {
+				if (!parte_cena.empty()) {
+					cenasVisitadas.push_back(stoi(parte_cena));
+				}
 			}
 		}
 
-		jogador.limparInventario(); // Esvazia o inventario atual antes de adicionar os itens salvos
-
-		// Loop que le o resto do arquivo, linha por linha. Cada linha e um item.
+		// --- LEITURA SEGURA DO INVENTARIO ---
+		jogador.limparInventario();
 		while (getline(arquivoDeSave, linha)) {
+			if (linha.empty()) continue; // Pula linhas em branco no inventario
+
 			stringstream ss_item(linha);
 			string parte_item;
-
-			// Variaveis para guardar os 5 atributos do item
 			string nome;
 			char tipo;
 			bool podeCombate;
 			int fa, dano;
 
-			// Pega as partes separadas por ';'
-			getline(ss_item, parte_item, ';'); nome = parte_item;  // lê o que tá em ss_item ATÉ O ; e coloca em parte_item 
+			getline(ss_item, parte_item, ';'); nome = parte_item;
 			getline(ss_item, parte_item, ';'); tipo = parte_item[0];
 			getline(ss_item, parte_item, ';'); podeCombate = (stoi(parte_item) == 1);
 			getline(ss_item, parte_item, ';'); fa = stoi(parte_item);
@@ -391,11 +387,10 @@ void Jogo::mostrarTelaDeAbertura() {
 
 		cout << "\nJogo carregado com sucesso!" << endl;
 		cout << "Pressione Enter para continuar...";
-		// cin.ignore para limpar qualquer entrada residual antes de pausar
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		cin.get();
 
-		return true; // Retorna 'true' para indicar que o carregamento foi um sucesso
+		return true;
 	}
 
 	void Jogo::criarNovoPersonagem() {
@@ -430,6 +425,7 @@ void Jogo::mostrarTelaDeAbertura() {
 			cout <<"Voce tem " << pontos_disponiveis << " pontos disponiveis." << endl;
 			cout << "Voce quer incrementar seus pontos em sorte, habilidade ou energia? " << endl << endl;
 			cin >> escolha;
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); ///CONFIRMAR SE ISSO TÁ CERTO // julie
 
 			cout << "Quantos pontos voce deseja incrementar? " << endl << endl;
 			cin >> quantidade;

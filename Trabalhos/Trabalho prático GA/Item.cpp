@@ -51,8 +51,8 @@ bool Item::isArmadura() {
 }
 
 
-stringstream ss; // cria uma string com FLUXO, onde incluímos vários pedaços
 string Item::get_descricao() {
+	stringstream ss; // cria uma string com FLUXO, onde incluímos vários pedaços
 	ss << "Item: " << this->get_nome() << endl;
 
 	if (this->isArma()) { // se for arma
