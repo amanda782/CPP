@@ -18,6 +18,7 @@ public: // pra construir o jogador, precisamos definir a distribuição de pontos 
 	vector<Item> get_inventario();
 	int getTesouro();
 	void imprime_inventario();
+	Item getArmaEquipada();
 
 
 	//metodos de ataque:

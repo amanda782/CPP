@@ -2,8 +2,7 @@
 #include "Entidade.h"
 #include <cstdlib> // Para as funções srand() e rand()
 #include <ctime>   // Para a função time()
-#define NOMINMAX // windows estava interferindo nos macros, precisei definir aqui
-#include <windows.h> // para o sleep
+
 
 
 Jogador::Jogador() :Entidade ("Harry Potter", 6, 12, 6) { // construtor vazio com atributos válidos
@@ -14,6 +13,8 @@ Jogador::Jogador() :Entidade ("Harry Potter", 6, 12, 6) { // construtor vazio co
 Jogador::Jogador(string name, int energy, int luck, int hability, int provisoes) :Entidade(name, hability, energy, luck) { // construtor que vai ser chamado após a definição da distribuição dos pontos
 	provisoes_atual_jogador = provisoes;
 	tesouro = 0;
+	Item varinhaInicial("Varinha", 'w', true, 1, 2); // nome, tipo, combate, FA, dano
+	arma_jogador = varinhaInicial;
 }
 
 Jogador::~Jogador(){}
@@ -25,13 +26,19 @@ vector<Item> Jogador::get_inventario() {
 int Jogador::get_provisoes_atuais(){
 	return provisoes_atual_jogador;
 }
+
+Item Jogador::getArmaEquipada() {
+	return arma_jogador;
+}
+
 void Jogador::imprime_inventario() {
 	cout << endl << "Nome do jogador: " << nome << endl;
 	cout << "Habilidade do jogador: " << habilidade << endl;
 	cout << "Sorte do jogador: " << sorte << endl;
 	cout << "Energia do jogador: " << energia << endl;
 	cout << "Provisoes do jogador:" << provisoes_atual_jogador << endl;
-	Sleep(5000);
+	cout << endl << "Pressione enter para continuar. " << endl;
+	cin.get();
 }
 
 int Jogador::calcular_FA() {
@@ -52,12 +59,14 @@ bool Jogador::testar_sorte() {
 
 	if (sorte >= rolagem_sorte_final) {
 		cout << "A sorte esta do seu lado! Dano reduzido em 2x." << endl;
-		Sleep(5000);
+		cout << endl << "Pressione enter para continuar. " << endl;
+		cin.get();
 		return true;
 	}
 	else {
 		cout << "Mais sorte na proxima. Infelizmente nao foi dessa vez :( " << endl;
-		Sleep(5000);
+		cout << endl << "Pressione enter para continuar. " << endl;
+		cin.get();
 		return false;
 	}
 }

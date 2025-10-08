@@ -8,8 +8,7 @@
 #include <vector>
 #include <sstream> // Essencial para o stringstream
 #include <limits>  // Para o cin.ignore
-#define NOMINMAX // windows estava interferindo nos macros, precisei definir aqui
-//#include <windows.h> // para o sleep
+
 
 using namespace std;
 
@@ -34,7 +33,13 @@ void Jogo::iniciarJogo() {
 				cout << "\n--- Cena " << idCenaAtual << " ---\n" << endl;
 				cout << cena.getTextoDaHistoria() << endl;
 
-				if (cena.ehUmaBatalha()) {
+				if (idCenaAtual == 9) {
+					cout << "\nFIM DA AVENTURA! Obrigado por jogar." << endl;
+					jogoRodando = false; // Sinaliza para o loop while terminar
+				}
+
+
+				else if (cena.ehUmaBatalha()) {
 				iniciarBatalha();
 				}
 
@@ -65,8 +70,9 @@ void Jogo::iniciarJogo() {
 void Jogo::iniciarBatalha() {
 	// Preparação:
 	Inimigo inimigo = cena.getInimigo(); // Pega uma cópia do inimigo da cena atual
-	//Sleep(5000); //pausa por 5segundos antes de limpar a tela pra batalha
-	system("cls"); // Limpa a tela
+	cout << endl << "Pressione enter para continuar. " << endl;
+	cin.get();
+	
 	cout << "!!! BATALHA !!!" << endl;
 	cout << "Voce encontrou um " << inimigo.getNome() << "!" << endl;
 	cout << "------------------------------------------" << endl;
@@ -98,7 +104,10 @@ void Jogo::iniciarBatalha() {
 
 		// Compara as Forças de Ataque e aplica o dano
 		if (fa_jogador > fa_inimigo) {
-			cout << "Voce venceu a rodada e causou 2 de dano!" << endl;
+			int danoBase = jogador.getArmaEquipada().get_dano(); // Pega o dano da arma
+			
+
+			cout << "Voce venceu a rodada e causou "<<danoBase<<" de dano!" << endl;
 			cout << "Caso voce queira usar a sorte para tentar dobrar o dano, digite \"sim\. Caso queira acessar os atributos do jogador, digite \"inventario\". Caso queira prosseguir, digite qualquer outra coisa." << endl;
 			cin >> answer_dano;
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -110,7 +119,7 @@ void Jogo::iniciarBatalha() {
 				cin >> answer_dano;
 			}
 			if (answer_dano == "sim")  // caso queira testar a sorte
-				inimigo.receberDano(jogador.ampliar_dano(2)); // chama a funcao de receber dano junto com  a de testar a sorte
+				inimigo.receberDano(jogador.ampliar_dano(danoBase)); // chama a funcao de receber dano junto com  a de testar a sorte
 			else
 				inimigo.receberDano(2); 
 		}

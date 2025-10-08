@@ -6,7 +6,7 @@ Item::Item() {
 	nome = "Item vazio";
 	tipo = ' ';
 	forca_de_ataque = 0;
-	dano = 0;
+	dano = 2;
 }
 
 Item::Item(string nome_do_item, char tipo_do_item, bool combate_do_item, int FA, int dano_do_item) {
