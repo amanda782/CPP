@@ -67,25 +67,66 @@ void Jogo::iniciarJogo() {
 	}
 
 
+
+// Em jogo.cpp
 void Jogo::iniciarBatalha() {
-	// Preparação:
-	Inimigo inimigo = cena.getInimigo(); // Pega uma cópia do inimigo da cena atual
-	cout << endl << "Pressione enter para continuar. " << endl;
-	cin.get();
-	
-	cout << "!!! BATALHA !!!" << endl;
+	Inimigo inimigo = cena.getInimigo();
+	cout << "\n!!! BATALHA IMINENTE !!!" << endl;
 	cout << "Voce encontrou um " << inimigo.getNome() << "!" << endl;
 	cout << "------------------------------------------" << endl;
-	cout << "INIMIGO -> Habilidade: " << inimigo.getHabilidade() << " | Energia: " << inimigo.getEnergia() << endl; //
-	cout << "VOCE    -> Habilidade: " << jogador.getHabilidade() << " | Energia: " << jogador.getEnergia() << endl; //
-	cout << "------------------------------------------" << endl;
+
+	// --- FASE DE PREPARAÇÃO ---
+	bool iniciarCombate = false;
+	while (!iniciarCombate) {
+		
+		cout << "--- PREPARACAO PARA O COMBATE ---" << endl;
+		cout << "INIMIGO: " << inimigo.getNome() << " (Habilidade: " << inimigo.getHabilidade() << ", Energia: " << inimigo.getEnergia() << ")" << endl;
+		cout << "VOCE   : " << jogador.getNome() << " (Energia: " << jogador.getEnergia() << "/" << jogador.getEnergiaMax() << ")" << endl;
+		cout << "------------------------------------------" << endl;
+		cout << "O que voce deseja fazer?" << endl;
+		cout << "1. Gerenciar Inventario (Equipar Itens)" << endl;
+		cout << "2. Usar Provisao (Recupera 4 de Energia)" << endl;
+		cout << "3. Iniciar Combate" << endl;
+		cout << "------------------------------------------" << endl;
+		cout << "> ";
+
+		int escolha;
+		cin >> escolha;
+
+		switch (escolha) {
+		case 1:
+			gerenciarInventario(); // Chama a função que criamos no Passo 1
+			break;
+		case 2:
+			if (jogador.usar_provisao()) { // Tenta usar uma provisão
+				cout << "\nVoce usou uma provisao! Sua energia foi restaurada." << endl;
+			}
+			else {
+				cout << "\nVoce nao tem provisoes!" << endl;
+			}
+			cout << "Pressione Enter para continuar...";
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cin.get();
+			break;
+		case 3:
+			iniciarCombate = true; // Sai do loop de preparação
+			break;
+		default:
+			cout << "\nOpcao invalida! Tente novamente." << endl;
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cin.get();
+			break;
+		}
+	}
+
+	// FASE DE COMBATE
+	cout << "\nO combate comeca!" << endl;
 	cout << "Pressione Enter para comecar o combate...";
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	cin.get();
 
-	// Combate por rodada:
-	while (jogador.estaVivo() && inimigo.estaVivo()) { // Loop continua enquanto ambos estiverem vivos
-		system("cls");
+	while (jogador.estaVivo() && inimigo.estaVivo()) {
+		
 		cout << "--- NOVA RODADA ---" << endl;
 		cout << "Energia do Inimigo: " << inimigo.getEnergia() << endl;
 		cout << "Sua Energia: " << jogador.getEnergia() << endl;
@@ -93,50 +134,36 @@ void Jogo::iniciarBatalha() {
 		cout << "Pressione Enter para atacar...";
 		cin.get();
 
-		// Calcula a Força de Ataque para ambos
-		int fa_jogador = jogador.calcular_FA(); 
-		int fa_inimigo = inimigo.calcular_FA(); 
+		int fa_jogador = jogador.calcular_FA();
+		int fa_inimigo = inimigo.calcular_FA();
 
 		cout << "Sua Forca de Ataque: " << fa_jogador << endl;
 		cout << "Forca de Ataque do Inimigo: " << fa_inimigo << endl;
 		cout << "------------------------------------------" << endl;
-		string answer_dano;//armazena a resposta da sorte
+		string answer_dano;
 
-		// Compara as Forças de Ataque e aplica o dano
 		if (fa_jogador > fa_inimigo) {
-			int danoBase = jogador.getArmaEquipada().get_dano(); // Pega o dano da arma
-			
+			int danoBase = jogador.getArmaEquipada().get_dano();
+			if (danoBase <= 0) danoBase = 1; // Garante dano mínimo de 1
 
-			cout << "Voce venceu a rodada e causou "<<danoBase<<" de dano!" << endl;
-			cout << "Caso voce queira usar a sorte para tentar dobrar o dano, digite \"sim\. Caso queira acessar os atributos do jogador, digite \"inventario\". Caso queira prosseguir, digite qualquer outra coisa." << endl;
+			cout << "Voce venceu a rodada e causou " << danoBase << " de dano!" << endl;
+			cout << "Deseja testar a sorte para dobrar o dano? (sim/nao)" << endl;
 			cin >> answer_dano;
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-
-			while (answer_dano == "inventario") {
-				jogador.imprime_inventario();
-				cout << "\nO que voce faz agora? (digite \"sim\" para usar a sorte ou qualquer outra coisa para prosseguir com o dano normal)" << endl;
-				cin >> answer_dano;
-			}
-			if (answer_dano == "sim")  // caso queira testar a sorte
-				inimigo.receberDano(jogador.ampliar_dano(danoBase)); // chama a funcao de receber dano junto com  a de testar a sorte
+			if (answer_dano == "sim")
+				inimigo.receberDano(jogador.ampliar_dano(danoBase));
 			else
-				inimigo.receberDano(2); 
+				inimigo.receberDano(danoBase);
 		}
 		else if (fa_inimigo > fa_jogador) {
 			cout << "O inimigo venceu a rodada e voce sofreu 2 de dano!" << endl;
-			cout << "Caso voce queira usar a sorte para tentar reduzir o dano, digite \"sim\". Caso queira acessar os atributos do jogador, digite \"inventario\". Caso queira prosseguir, digite qualquer outra coisa. " << endl;
-
+			cout << "Deseja testar a sorte para reduzir o dano? (sim/nao)" << endl;
 			cin >> answer_dano;
-			while (answer_dano == "inventario") {
-				jogador.imprime_inventario();
-				cout << "\nO que voce faz agora? (digite \"sim\" para usar a sorte ou qualquer outra coisa para prosseguir com o dano normal)" << endl;
-				cin >> answer_dano;
-			}
+
 			if (answer_dano == "sim")
 				jogador.receberDano(jogador.reduzir_dano(2));
 			else
-				jogador.receberDano(2); 
+				jogador.receberDano(2);
 		}
 		else {
 			cout << "Empate! Ninguem se feriu nesta rodada." << endl;
@@ -146,45 +173,38 @@ void Jogo::iniciarBatalha() {
 		cin.get();
 	}
 
-	//Resultado da batalha:
+	// --- FASE PÓS-BATALHA
 	system("cls");
 	cout << "--- FIM DA BATALHA ---" << endl;
-
-	if (jogador.estaVivo()) { // Jogador venceu
+	if (jogador.estaVivo()) {
 		cout << "Voce derrotou o " << inimigo.getNome() << "!" << endl << endl;
-
 		// Coleta de recompensas
-		int tesouro_ganho = inimigo.getTesouroDeixado(); 
+		int tesouro_ganho = inimigo.getTesouroDeixado();
 		if (tesouro_ganho > 0) {
 			cout << "Voce encontrou " << tesouro_ganho << " pecas de tesouro!" << endl;
-			jogador.setTesouro(jogador.getTesouro() + tesouro_ganho); 
+			jogador.setTesouro(jogador.getTesouro() + tesouro_ganho);
 		}
 
-		int provisao_ganha = inimigo.getProvisoesDeixadas(); 
+		int provisao_ganha = inimigo.getProvisoesDeixadas();
 		if (provisao_ganha > 0) {
 			cout << "Voce encontrou " << provisao_ganha << " provisao(oes)!" << endl;
-			jogador.adiciona_provisao(provisao_ganha); 
+			jogador.adiciona_provisao(provisao_ganha);
 		}
 
-		Item item_ganho = inimigo.getItemDeixado(); 
+		Item item_ganho = inimigo.getItemDeixado();
 		if (item_ganho.get_nome() != "Item vazio") { // Verifica se é um item válido
 			cout << "O inimigo deixou cair um item: " << item_ganho.get_nome() << endl;
-			jogador.adiciona_item(item_ganho); 
+			jogador.adiciona_item(item_ganho);
 		}
 
 		// Avança para a cena de vitória
-		idCenaAtual = cena.getIdCenaVitoria(); 
-
+		idCenaAtual = cena.getIdCenaVitoria();
 	}
-	else { // Jogador foi derrotado
+	else {
 		cout << "Voce foi derrotado pelo " << inimigo.getNome() << "..." << endl;
-
-		// Avança para a cena de derrota
-		idCenaAtual = cena.getIdCenaDerrota(); 
+		idCenaAtual = cena.getIdCenaDerrota();
 	}
-
-	cout << "\n------------------------------------------" << endl;
-	cout << "Pressione Enter para continuar sua jornada...";
+	cout << "\nPressione Enter para continuar sua jornada...";
 	cin.get();
 }
 
@@ -482,4 +502,43 @@ void Jogo::mostrarTelaDeAbertura() {
 		cout << "Energia: " << jogador.getEnergia() << " / " << jogador.getEnergiaMax() << endl;
 		cout << "Sorte: " << jogador.getSorte() << endl;
 		cout << "------------------------------------" << endl;
+	}
+
+
+	void Jogo::gerenciarInventario() {
+		system("cls");
+		cout << "--- GERENCIAR INVENTARIO ---" << endl;
+
+		// Mostra o status completo, incluindo itens já equipados
+		jogador.imprime_inventario();
+
+		vector<Item> inventario = jogador.get_inventario();
+
+		if (inventario.empty()) {
+			cout << "\nSua mochila esta vazia. Nao ha itens para equipar." << endl;
+		}
+		else {
+			cout << "\n--- ITENS PARA EQUIPAR ---" << endl;
+			for (int i = 0; i < inventario.size(); ++i) {
+				cout << i << ". " << inventario[i].get_nome() << endl;
+			}
+
+			cout << "--------------------------" << endl;
+			cout << "Digite o numero do item que deseja equipar (ou -1 para voltar): ";
+			int escolha;
+			cin >> escolha;
+
+			if (cin.good() && escolha >= 0 && escolha < inventario.size()) {
+				jogador.equipar_item(escolha); // chama a função para equipar
+			}
+			else if (escolha != -1) {
+				cout << "Escolha invalida." << endl;
+			}
+
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+		}
+
+		cout << "\nPressione Enter para voltar...";
+		cin.get();
 	}

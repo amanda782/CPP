@@ -147,7 +147,9 @@ bool Cena::carregarCena(int numeroDaCena, Jogador& jogador) {
 
 			Item item_drop(nome, tipo, podeCombate, fa, dano);
 			inimigo.setItemDeixado(item_drop);
-			jogador.adiciona_item(item_drop); //adiciona o item dropado ao inventario
+			jogador.adiciona_item(item_drop);//adiciona o item dropado ao inventario
+			if (item_drop.get_nome() == "Sapo de chocolate")
+				jogador.adiciona_provisao(1);
 		}
 		
 		 //Pergunta se O resultado da busca pelo caractere : na linha é diferente do valor de 'não encontrado'?

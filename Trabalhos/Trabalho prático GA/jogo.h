@@ -22,6 +22,7 @@ public:
     void salvarJogo(); //julie
     bool carregarJogo();// julie
     void exibir_status_jogador();
+    void gerenciarInventario();
 
 
 protected:
