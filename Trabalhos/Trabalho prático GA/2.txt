@@ -1,4 +1,7 @@
-Voce confia em seus passos silenciosos e segue pelos corredores escuros. Ao passar por uma sala de aula, voce ouve um barulho baixo de vidro quebrando la dentro. A sua frente, o corredor continua ate a tapeçaria de Barnabas.
-
+Voce confia em seus passos silenciosos e segue pelos corredores escuros.
+Ao passar por uma sala de aula, voce ouve um barulho baixo de vidro quebrando la dentro.
+A sua frente, o corredor continua ate a tapeçaria de Barnabas.
+Ao entrar na sala, voce ve um brilho sutil vindo de um canto escuro. Enrolado no chao, como se tivesse acabado de cair de um gancho, esta um tecido prateado que parece ondular como agua. Voce encontrou a Capa da Invisibilidade.
+I: Capa da Invisibilidade;r;1;-2;-1
 #10: Investigar o barulho na sala de aula.
 #4: Ignorar e continuar pelo corredor.

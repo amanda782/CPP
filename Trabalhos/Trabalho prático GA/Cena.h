@@ -4,13 +4,14 @@
 #include <map> // Precisamos do 'map' para guardar as opções de escolha, ele é tipo um dicionario, que nesse caso aqui, vai relacionar um numero c um texto.
 #include "Inimigo.h"
 #include "Item.h"
+#include "Jogador.h"
 
 class Cena {
 public:
 	Cena();
 	~Cena();
 
-    bool carregarCena(int numeroDaCena);
+    bool carregarCena(int numeroDaCena, Jogador& jogador);
 
     string getTextoDaHistoria();
     map<int, string> getOpcoes();

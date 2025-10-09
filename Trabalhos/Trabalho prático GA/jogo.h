@@ -24,7 +24,7 @@ public:
     void exibir_status_jogador();
 
 
-private:
+protected:
     Jogador jogador;
     Cena cena;
     int idCenaAtual;

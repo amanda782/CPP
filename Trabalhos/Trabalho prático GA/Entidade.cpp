@@ -101,7 +101,7 @@ void Entidade::setEnergiaMax(int novaEnergiaMax) {
 
 int Entidade::calcular_FA() {
 	int rolagem_dado = (rand() % 10) + 1; // gera um número aleatório entre 1 e 10
-	int forca_de_ataque = this->habilidade + rolagem_dado; //soma  a habilidade com a rolagem do dado
+	int forca_de_ataque = habilidade + rolagem_dado; //soma  a habilidade com a rolagem do dado
 	return forca_de_ataque;
  }
 

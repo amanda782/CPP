@@ -1,5 +1,7 @@
-O corredor te leva a uma sala ainda maior, cujo teto parece o ceu noturno. Do escuro, oito olhos brilham e voce ouve o som de pinças estalando. Uma Acromantula gigante surge das sombras, bloqueando o seu caminho. Ela se prepara para o duelo final do seu teste.
+O corredor te leva a uma sala ainda maior, cujo teto parece o ceu noturno. No centro da sala, sobre um pedestal de pedra, repousa uma varinha de aparencia antiga, feita de uma madeira que voce nao reconhece. Ela parece poderosa. Voce encontrou a Varinha das Varinhas.
 
+Assim que voce a pega, um som de pinças estalando ecoa pela escuridao. Oito olhos brilham na sua direcao e uma Acromantula gigante surge das sombras, bloqueando o seu caminho. Ela se prepara para o duelo final do seu teste.
+I: Varinha das Varinhas;w;1;3;2
 M: S
 N: Acromantula
 H: 10

@@ -26,7 +26,7 @@ void Jogo::iniciarJogo() {
 	mostrarTelaDeAbertura();
 
 	while (jogoRodando == true) {
-		if (cena.carregarCena(idCenaAtual)) {
+		if (cena.carregarCena(idCenaAtual, jogador)) {
 			cenasVisitadas.push_back(idCenaAtual); // Pegue o número da cena atual e adicione-o ao final da lista de cenas visitadas.
 			salvarJogo();
 

@@ -53,18 +53,18 @@ bool Item::isArmadura() {
 
 string Item::get_descricao() {
 	stringstream ss; // cria uma string com FLUXO, onde incluímos vários pedaços
-	ss << "Item: " << this->get_nome() << endl;
+	ss << "Item: " << get_nome() << endl;
 
-	if (this->isArma()) { // se for arma
+	if (isArma()) { // se for arma
 		ss << "Tipo do item: Arma" << endl;
-		ss << "Força de ataque: +" << this->forca_de_ataque << endl;
-		ss<< "Dano: +" << this->dano << endl;
+		ss << "Força de ataque: +" << forca_de_ataque << endl;
+		ss<< "Dano: +" << dano << endl;
 	}
-	else if (this->isArmadura()) {
+	else if (isArmadura()) {
 		ss << "Tipo do item: Armadura" << endl;
-		ss << "Reduz Dano em: "  << this->dano <<endl;
+		ss << "Reduz Dano em: "  << dano <<endl;
 	}
 
-	ss << "Pode ser usado em combate: " << (this->get_combate() ? "Sim" : "Nao");
+	ss << "Pode ser usado em combate: " << (get_combate() ? "Sim" : "Nao");
 	return ss.str(); // entender melhor o this
 }

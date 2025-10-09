@@ -2,6 +2,12 @@
 #include "Entidade.h"
 #include <cstdlib> // Para as funções srand() e rand()
 #include <ctime>   // Para a função time()
+#include "Item.h"
+#include "jogo.h"
+#include "Cena.h"
+#include "Entidade.h"
+
+
 
 
 
@@ -30,20 +36,59 @@ int Jogador::get_provisoes_atuais(){
 Item Jogador::getArmaEquipada() {
 	return arma_jogador;
 }
-
 void Jogador::imprime_inventario() {
-	cout << endl << "Nome do jogador: " << nome << endl;
-	cout << "Habilidade do jogador: " << habilidade << endl;
-	cout << "Sorte do jogador: " << sorte << endl;
-	cout << "Energia do jogador: " << energia << endl;
-	cout << "Provisoes do jogador:" << provisoes_atual_jogador << endl;
-	cout << endl << "Pressione enter para continuar. " << endl;
+
+	// Imprime os status principais primeiro
+	cout << "--- STATUS ---" << endl;
+	cout << "Nome: " << nome << endl;
+	cout << "Habilidade: " << habilidade << endl;
+	cout << "Sorte: " << sorte << endl;
+	cout << "Energia: " << energia << " / " << energiaMaxima << endl;
+	cout << "Provisoes: " << provisoes_atual_jogador << endl;
+	cout << "Tesouro: " << tesouro << endl;
+	cout << "------------------" << endl;
+
+	// Imprime a arma e armadura equipadas
+	if (arma_jogador.get_nome() != "Item vazio") {
+		cout << "Arma Equipada: " << arma_jogador.get_nome() << endl;
+	}
+	if (armadura_jogador.get_nome() != "Item vazio") {
+		cout << "Armadura Equipada: " << armadura_jogador.get_nome() << endl;
+	}
+	cout << "------------------" << endl;
+
+	// Imprime os itens no inventário
+	cout << "--- ITENS NA MOCHILA ---" << endl;
+	if (inventario.empty()) {
+		cout << "A mochila esta vazia." << endl;
+	}
+	else {
+		for (size_t i = 0; i < inventario.size(); ++i) {
+			Item& item_atual = inventario[i];
+			string tipo_texto;
+			switch (item_atual.get_tipo()) {
+			case 'w': tipo_texto = "Arma"; break;
+			case 'a': tipo_texto = "Armadura"; break; 
+			case 'c': tipo_texto = "Comum"; break;
+			default: tipo_texto = "Desconhecido"; break;
+			}
+			cout << i + 1 << ". " << item_atual.get_nome()
+				<< " [" << tipo_texto << "]"
+				<< " (FA: " << item_atual.get_FA()
+				<< ", Dano: " << item_atual.get_dano() << ")" << endl;
+		}
+	}
+	cout << "------------------" << endl;
+
+	cout << "\nPressione Enter para continuar...";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpa o buffer de forma segura
 	cin.get();
 }
 
+
 int Jogador::calcular_FA() {
 	int forca_base = Entidade::calcular_FA(); // chama a função da entidade pra calcular a força base (comum ao inimigo, por isso está lá)
-	int bonus_da_arma = this->arma_jogador.get_FA(); // dá um get no bônus da arma
+	int bonus_da_arma = arma_jogador.get_FA(); // dá um get no bônus da arma
 	int forca_ataque = bonus_da_arma + forca_base; // soma o bônus da arma com a FA do jogador
 	return forca_ataque; // retorna essa soma
 	//caso o jogador não tenha uma arma, vai vir zero do construtor vazio e a soma continua válida!
@@ -99,26 +144,26 @@ void Jogador::equipar_item(int indice_do_item) { // troca entre o inventário e o
 		return; //encerra a função se chegar aqui
 	}
 	else {
-		Item item_para_equipar = this->inventario.at(indice_do_item); // at serve para acessar determinado item do vetor, entre parenteses a localização
+		Item item_para_equipar = inventario.at(indice_do_item); // at serve para acessar determinado item do vetor, entre parenteses a localização
 		//aqui coloca na variável para_equipar o item que está no inventário no momento
 
 		if (item_para_equipar.get_tipo() == 'w') { // se o item novo equipado for uma arma
 			Item item_antigo = arma_jogador; // define a atual como antiga
 			arma_jogador = item_para_equipar; // agora a equipada é a atual
 			cout << "Você equipou: " << item_para_equipar.get_nome() << endl; // aviso que a arma nova foi equipada
-			this->inventario.erase(this->inventario.begin() + indice_do_item); // o item equipado novo é removido do inventário
+			inventario.erase(inventario.begin() + indice_do_item); // o item equipado novo é removido do inventário
 
 			if (item_antigo.get_nome() != "Item vazio") // se o item antigo for um item válido
-				this->inventario.push_back(item_antigo); // ele é colocado de volta no inventário
+				inventario.push_back(item_antigo); // ele é colocado de volta no inventário
 		}
 		else if (item_para_equipar.get_tipo() == 'a') { //se item novo for uma armadura
 			Item item_antigo = armadura_jogador; // define a atual como antiga
 			armadura_jogador = item_para_equipar; // agora a equipada é a atual
 			cout << "Você equipou: " << item_para_equipar.get_nome() << endl; // aviso que a armadura nova foi equipada
-			this->inventario.erase(this->inventario.begin() + indice_do_item); // o item equipado novo é removido do inventário
+			inventario.erase(inventario.begin() + indice_do_item); // o item equipado novo é removido do inventário
 
 			if (item_antigo.get_nome() != "Item vazio") // se o item antigo for um item válido
-				this->inventario.push_back(item_antigo); // ele é colocado de volta no inventário
+				inventario.push_back(item_antigo); // ele é colocado de volta no inventário
 		}
 		else
 			cout <<endl << item_para_equipar.get_nome() << "não é um item equipável" << endl;

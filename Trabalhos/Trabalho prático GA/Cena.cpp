@@ -2,6 +2,8 @@
 #include <iostream>  
 #include <fstream>   // Para poder ler arquivos (ifstream)
 #include <sstream>   // Uma ferramenta util para processar strings
+#include "Jogador.h"
+#include "jogo.h"
 
 Cena::Cena(){
 	textoDaHistoria = "";
@@ -16,8 +18,10 @@ Cena::Cena(){
 
 Cena::~Cena() {}
 
-bool Cena::carregarCena(int numeroDaCena) {
+bool Cena::carregarCena(int numeroDaCena, Jogador& jogador) {
 
+	if (numeroDaCena == 0) //retorna 0 caso va pra cena 0 (final)
+		return false;
 
 	textoDaHistoria = "";
 	opcoes.clear(); // O metodo .clear() esvazia um map
@@ -123,7 +127,7 @@ bool Cena::carregarCena(int numeroDaCena) {
 
 			string nome;
 			char tipo = ' ';
-			bool podeCombate = false;
+			bool podeCombate = true;
 			int fa = 0, dano = 0;
 
 			getline(ss, parte, ';');
@@ -143,6 +147,7 @@ bool Cena::carregarCena(int numeroDaCena) {
 
 			Item item_drop(nome, tipo, podeCombate, fa, dano);
 			inimigo.setItemDeixado(item_drop);
+			jogador.adiciona_item(item_drop); //adiciona o item dropado ao inventario
 		}
 		
 		 //Pergunta se O resultado da busca pelo caractere : na linha é diferente do valor de 'não encontrado'?

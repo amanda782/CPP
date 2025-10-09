@@ -5,7 +5,7 @@
 #include "Item.h"
 #include <vector> 
 
-using namespace std;
+
 
 class Jogador: public Entidade {
 public: // pra construir o jogador, precisamos definir a distribuição de pontos no MAIN
