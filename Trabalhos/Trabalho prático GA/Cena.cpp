@@ -45,7 +45,7 @@ bool Cena::carregarCena(int numeroDaCena, Jogador& jogador) {
 
 	while (getline(arquivo, linha))//getline lê a linha do arquivo e armazena na variavel linha
 	{
-		if (linha.rfind("#", 0) == 0) {
+		if (linha.rfind("#", 0) == 0) { //procura o # desde a posição 0
 
 			// Encontra a posição dos dois pontos
 			size_t coloca_dois_pontos = linha.find(':');

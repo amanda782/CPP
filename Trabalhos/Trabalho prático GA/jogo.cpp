@@ -485,7 +485,6 @@ void Jogo::exibir_status_jogador() {
 	cout << "------------------------------------" << endl;
 }
 
-// Em jogo.cpp
 void Jogo::gerenciarInventario() {
 	system("cls");
 	cout << "--- GERENCIAR INVENTARIO ---" << endl;
