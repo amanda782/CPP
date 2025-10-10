@@ -153,7 +153,8 @@ bool Cena::carregarCena(int numeroDaCena, Jogador& jogador) {
 			}
 			else {
 				// Se NÃO for uma batalha, o item está na sala e é seu imediatamente.
-				jogador.adiciona_item(item_drop);
+				///jogador.adiciona_item(item_drop);
+				itensEncontrados.push_back(item_drop); //// Guarda o item na lista da cena
 			}
 			///jogador.adiciona_item(item_drop);//adiciona o item dropado ao inventario //mas ja tem uma funcao q faz isso em iniciar batalha
 			if (item_drop.get_nome() == "Sapo de Chocolate")

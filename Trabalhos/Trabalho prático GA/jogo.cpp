@@ -33,7 +33,20 @@ void Jogo::iniciarJogo() {
 				cout << "\n--- Cena " << idCenaAtual << " ---\n" << endl;
 				cout << cena.getTextoDaHistoria() << endl;
 
-				if (idCenaAtual == 9) {
+				// Pega os itens que a cena guardou e anuncia eles
+				vector<Item> itensDaCena = cena.getItensEncontrados();
+				if (!itensDaCena.empty()) {
+					cout << "------------------------------------------" << endl;
+					for (int i = 0; i < itensDaCena.size(); ++i) {
+						// Pegamos o item na posição 'i' do vetor
+						Item& item = itensDaCena[i];
+
+						jogador.adiciona_item(item);
+						cout << "Voce adicionou o item " << item.get_nome() << " ao seu inventario!" << endl;
+					}
+					}
+				}
+				if (idCenaAtual == 7) {
 					cout << "\nFIM DA AVENTURA! Obrigado por jogar." << endl;
 					jogoRodando = false; // Sinaliza para o loop while terminar
 				}
@@ -64,7 +77,7 @@ void Jogo::iniciarJogo() {
 				}
 			}
 		}
-	}
+	
 
 
 
@@ -81,7 +94,7 @@ void Jogo::iniciarBatalha() {
 		
 		cout << "--- PREPARACAO PARA O COMBATE ---" << endl;
 		cout << "INIMIGO: " << inimigo.getNome() << " (Habilidade: " << inimigo.getHabilidade() << ", Energia: " << inimigo.getEnergia() << ")" << endl;
-		cout << "VOCE   : " << jogador.getNome() << " (Energia: " << jogador.getEnergia() << "/" << jogador.getEnergiaMax() << ")" << endl;
+		cout << "VOCE   : " << jogador.getNome() << " (Habilidade:" << jogador.getHabilidade() <<", Energia: " << jogador.getEnergia() << " / " << jogador.getEnergiaMax() << ")" << endl;
 		cout << "------------------------------------------" << endl;
 		cout << "O que voce deseja fazer?" << endl;
 		cout << "1. Gerenciar Inventario (Equipar Itens)" << endl;
@@ -181,7 +194,7 @@ void Jogo::iniciarBatalha() {
 		// Coleta de recompensas
 		int tesouro_ganho = inimigo.getTesouroDeixado();
 		if (tesouro_ganho > 0) {
-			cout << "Voce encontrou " << tesouro_ganho << " pecas de tesouro!" << endl;
+			cout << "Voce encontrou " << tesouro_ganho << " galeões!" << endl;
 			jogador.setTesouro(jogador.getTesouro() + tesouro_ganho);
 		}
 
@@ -192,7 +205,8 @@ void Jogo::iniciarBatalha() {
 		}
 
 		Item item_ganho = inimigo.getItemDeixado();
-		if (item_ganho.get_nome() != "Item vazio") { // Verifica se é um item válido
+
+		if(item_ganho.get_nome() != "Item vazio") { // Verifica se é um item válido
 			cout << "O inimigo deixou cair um item: " << item_ganho.get_nome() << endl;
 			jogador.adiciona_item(item_ganho);
 		}
@@ -200,10 +214,12 @@ void Jogo::iniciarBatalha() {
 		// Avança para a cena de vitória
 		idCenaAtual = cena.getIdCenaVitoria();
 	}
+
 	else {
 		cout << "Voce foi derrotado pelo " << inimigo.getNome() << "..." << endl;
 		idCenaAtual = cena.getIdCenaDerrota();
 	}
+
 	cout << "\nPressione Enter para continuar sua jornada...";
 	cin.get();
 }
@@ -440,7 +456,6 @@ void Jogo::mostrarTelaDeAbertura() {
 		cout << "Pressione Enter para comecar a distribuir os pontos...";
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		cin.get();
-		system("cls");
 
 		int pontos_disponiveis = 12;
 		cout << "Vamos distribuir seus 12 pontos! " << endl << endl << endl;

@@ -55,7 +55,6 @@ void Jogador::imprime_inventario() {
 	if (armadura_jogador.get_nome() != "Item vazio") {
 		cout << "Armadura Equipada: " << armadura_jogador.get_nome() << endl;
 	}
-	cout << "------------------" << endl;
 
 	// Imprime os itens no inventário
 	cout << "--- ITENS NA MOCHILA ---" << endl;
@@ -143,8 +142,7 @@ bool Jogador::usar_provisao() {
 
 void Jogador::adiciona_item(Item novo_item) {
 	inventario.push_back(novo_item); // adicionamos o novo item no vetor
-	cout << "Você adicionou o item " << novo_item.get_nome() << "ao seu inventario!" << endl;
-	//aviso pro usuário que o item foi adicionado ao inventário
+
 }
 
 void Jogador::adiciona_provisao(int quantidade_provisoes) {
