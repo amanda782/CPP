@@ -70,7 +70,7 @@ void Jogo::iniciarJogo() {
 
 // Em jogo.cpp
 void Jogo::iniciarBatalha() {
-	Inimigo inimigo = cena.getInimigo();
+	Inimigo& inimigo = cena.getInimigo();
 	cout << "\n!!! BATALHA IMINENTE !!!" << endl;
 	cout << "Voce encontrou um " << inimigo.getNome() << "!" << endl;
 	cout << "------------------------------------------" << endl;
@@ -169,7 +169,7 @@ void Jogo::iniciarBatalha() {
 			cout << "Empate! Ninguem se feriu nesta rodada." << endl;
 		}
 
-		cout << "Pressione Enter para a proxima rodada...";
+		cout << "Pressione Enter para a proxima rodada..." << endl;
 		cin.get();
 	}
 

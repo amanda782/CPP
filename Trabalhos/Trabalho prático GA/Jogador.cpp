@@ -116,16 +116,29 @@ bool Jogador::testar_sorte() {
 	}
 }
 
+
 bool Jogador::usar_provisao() {
-	if (provisoes_atual_jogador >= 1) { // se o jogador tiver pelo menos uma provisão
-		provisoes_atual_jogador--; // subtrai 1 provisão
-		energia += 4; //e aumenta 4 pontos de vida
-		if (energia > energiaMaxima)
-			energia = energiaMaxima;
-		return true;//a operação foi um sucesso!
+	// Procura pelo item "Sapo de Chocolate" no inventário
+	for (int i = 0; i < inventario.size(); ++i) {
+		if (inventario[i].get_nome() == "Sapo de Chocolate") {
+
+			// Efeito da provisão
+			energia += 4;
+			if (energia > energiaMaxima) {
+				energia = energiaMaxima;
+			}
+
+			// Remove o item do inventário após o uso
+			inventario.erase(inventario.begin() + i);
+
+			cout << "\nVoce comeu um Sapo de Chocolate e recuperou 4 de energia!" << endl;
+			return true; // Sucesso!
+		}
 	}
-	else //provisões insuficientes, não foi possível efetuar a transação
-		return false;
+
+	// Se o loop terminar, significa que não encontrou o item
+	cout << "\nVoce nao tem Sapo de Chocolate para usar!" << endl;
+	return false; // Falha!
 }
 
 void Jogador::adiciona_item(Item novo_item) {

@@ -15,7 +15,7 @@ public:
 
     string getTextoDaHistoria();
     map<int, string> getOpcoes();
-    Inimigo getInimigo();
+    Inimigo& getInimigo();
     bool ehUmaBatalha(); //expõe se é ou não 
     int getIdCenaVitoria();
     int getIdCenaDerrota();

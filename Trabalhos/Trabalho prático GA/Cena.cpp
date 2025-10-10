@@ -146,9 +146,17 @@ bool Cena::carregarCena(int numeroDaCena, Jogador& jogador) {
 			if (!parte.empty()) dano = stoi(parte);
 
 			Item item_drop(nome, tipo, podeCombate, fa, dano);
-			inimigo.setItemDeixado(item_drop);
-			jogador.adiciona_item(item_drop);//adiciona o item dropado ao inventario
-			if (item_drop.get_nome() == "Sapo de chocolate")
+			// Verifica se a cena já foi marcada como uma batalha
+			if (ehBatalha) {
+				// Se for uma batalha, o item é do inimigo e será pego após a vitória.
+				inimigo.setItemDeixado(item_drop);
+			}
+			else {
+				// Se NÃO for uma batalha, o item está na sala e é seu imediatamente.
+				jogador.adiciona_item(item_drop);
+			}
+			///jogador.adiciona_item(item_drop);//adiciona o item dropado ao inventario //mas ja tem uma funcao q faz isso em iniciar batalha
+			if (item_drop.get_nome() == "Sapo de Chocolate")
 				jogador.adiciona_provisao(1);
 		}
 		
@@ -196,7 +204,7 @@ map<int, string> Cena::getOpcoes() {
 	return opcoes;
 }
 
-Inimigo Cena::getInimigo(){
+Inimigo& Cena::getInimigo(){
 	return inimigo;
 }
 
