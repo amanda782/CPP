@@ -228,3 +228,26 @@ int Jogador::reduzir_dano(int dano_reduzir) {
 	}
 	return dano_reduzir;
 }
+
+bool Jogador::foiSalvoPelaPedra() {
+	// Primeiro, verifica se o jogador está com 0 ou menos de vida
+	if (energia <= 0) {
+		// Se estiver, procura pela pedra no inventário
+		for (int i = 0; i < inventario.size(); ++i) {
+			if (inventario[i].get_nome() == "Pedra da Ressurreicao") {
+				cout << "\nA Pedra da Ressurreicao brilha e te impede de cair, restaurando 1 de energia!" << endl;
+				energia = 1; // Restaura 1 de vida para sobreviver
+
+				// Remove a pedra do inventário
+				inventario.erase(inventario.begin() + i);
+				return true; // O jogador foi salvo
+			}
+		}
+	}
+	return false; // Não foi salvo (ou tinha energia ou não tinha a pedra)
+}
+
+
+Item Jogador::getArmaduraEquipada() {
+	return armadura_jogador;
+}

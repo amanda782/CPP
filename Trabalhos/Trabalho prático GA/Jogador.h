@@ -19,6 +19,8 @@ public: // pra construir o jogador, precisamos definir a distribuição de pontos 
 	int getTesouro();
 	void imprime_inventario();
 	Item getArmaEquipada();
+	bool foiSalvoPelaPedra(); 
+	Item getArmaduraEquipada(); 
 
 
 	//metodos de ataque:
