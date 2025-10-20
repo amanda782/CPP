@@ -1,0 +1,10 @@
+A figura ergue o rosto, revelando uma face palida, com fendas no lugar do nariz, e olhos vermelhos cheios de maldade. 'Entao, voce sobreviveu aos meus testes', sibila Lord Voldemort, erguendo sua varinha. 'Sua jornada termina aqui. Prepare-se para o fim!'
+
+M: S
+N: Lord Voldemort
+H: 12
+E: 20
+S: 10
+T: 5000
+P: 0
+11:12

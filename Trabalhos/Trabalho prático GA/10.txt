@@ -1,0 +1,4 @@
+Voce abre a porta rangente e espia para dentro. A sala de aula de pocoes esta vazia, exceto por um frasco caido no chao, com um liquido esverdeado brilhando ao luar. Parece que um gato derrubou.
+
+#11: Pegar e examinar o frasco.
+#4: Deixar para la e ir para a Sala Precisa.

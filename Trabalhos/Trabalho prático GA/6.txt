@@ -1,0 +1,7 @@
+Com um grito de 'Riddikulus!', o Bicho-Papao assume uma forma comica e explode em uma nuvem de fumaca.
+O bau agora esta aberto, revelando seu conteudo. Voce encontrou uma provisao util e a guarda.
+Dentro do bau, ao lado do Sapo de Chocolate, repousa uma pedra negra com uma rachadura incomum no meio. Ela pulsa com uma energia fria ao toque. Voce encontrou a Pedra da Ressurreicao.
+I: Sapo de Chocolate;c;0;0;0
+I: Pedra da Ressurreicao;c;0;0;0
+#12: Seguir pelo caminho da esquerda.
+#13: Seguir pelo caminho da direita.
