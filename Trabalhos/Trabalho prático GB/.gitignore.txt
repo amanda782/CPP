@@ -1,0 +1,17 @@
+# Arquivos de usuário (NUNCA envie)
+*.sln.DotSettings.user
+*.user
+
+# Pastas de Build (NUNCA envie)
+Debug/
+Release/
+x64/
+Win32/
+.vs/
+
+# Arquivos de Build
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.suo
