@@ -8,7 +8,7 @@
 using namespace std; 
 
 //referências devem ser "ligadas" (inicializadas) no exato momento em que são criadas. por isso sistema(s), e não sistema = s
-ReadingProcess::ReadingProcess(int pid, Sistema& s):Processo(pid), sistema(s) {
+ReadingProcess::ReadingProcess(int pid, Sistema s):Processo(pid), sistema(s) {
 	PID = pid;
 }
 ReadingProcess::~ReadingProcess() {}

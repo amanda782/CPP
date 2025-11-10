@@ -1,8 +1,9 @@
 #include "Sistema.h"
 #include <string>
+#include "ReadingProcess.h"
 
-Sistema::Sistema() {
-	fila = new FilaProcessos(); 
+Sistema::Sistema(FilaProcessos* minhaFila) {
+	fila = minhaFila;
 	pidCounter = 1;
 }
 Sistema::~Sistema() { 
@@ -39,6 +40,9 @@ void Sistema::iniciarSistema() {
 		cout << "1: Criar um processo de escrita (writting process) " << endl;
 		cout << "2: Criar um processo de leitura (reading process)" << endl;
 		cout << "3: Criar um processo de impressão (printing process)" << endl;
+		cout << "4: Executar o proximo processo da fila" << endl;
+		cout << "5: Executar um processo especifico (por pid)" << endl;
+		cout << "6: Imprimir a fila" << endl;
 		cout << "4: Sair" << endl;
 
 		int numero;
@@ -46,24 +50,27 @@ void Sistema::iniciarSistema() {
 		string expressao;
 
 		switch (numero) {
-		case 1:
+		case 1: {
 			cout << "Digite a expressao matematica a ser gravada: " << endl;
 			cin.ignore(); // ignora o enter do ultimo cin
 			getline(cin, expressao); // armazena a string do calculo em EXPRESSAO
-			//Processo* p = new WritingProcess(pidCounter, expressao, fila);
-			//aqui escreve no arquivo, falta metodos p isso
+			Processo* p = new WritingProcess(pidCounter, expressao);
+			fila->inserir(p);
+			cout << "Processo de PID: " << pidCounter << " adicionado a fila. " << endl;
 			pidCounter++;
 			break;
-		
+		}
 		case 2:
-			//chama metodo de leitura
+			//cria um processo de leitura
 			break;
 
 		case 3:
-			//chama metodo de impressao, só imprime na tela
+			//cria processo de impressao
 			break;
 		case 4:
 			return;
+		case 6:
+			fila->imprimirFila();
 		}
 	}
 }

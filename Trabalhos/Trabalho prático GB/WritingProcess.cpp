@@ -6,7 +6,7 @@ WritingProcess::WritingProcess():Processo() {
 	
 }
 
-WritingProcess::WritingProcess(int pid,string expressao, FilaProcessos* fila):Processo(pid) {
+WritingProcess::WritingProcess(int pid,string expressao):Processo(pid) {
 	PID = pid;
 	calculo = expressao;
 }
@@ -35,6 +35,7 @@ void WritingProcess::execute() {
 	arquivo.close(); // fecha o arquivo
 
 	cout << "-> Processo " << getPid() << " executado: expressao gravada no arquivo." << endl;
+	
 }
 
 

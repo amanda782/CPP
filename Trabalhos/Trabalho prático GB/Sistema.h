@@ -3,14 +3,14 @@
 #include "FilaProcessos.h"
 #include "WritingProcess.h"
 #include "ComputingProcess.h"
-#include "ReadingProcess.h"
+
 #include "Processo.h"
 #include "PrintingProcess.h"
 #include "CalculaExpressao.h"
 
 class Sistema {
 public:
-	Sistema();
+	Sistema(FilaProcessos* minhaFila);
 	~Sistema();
 
 	void criarProcesso(int pid); //porque passa pid por parametro (duvida) 

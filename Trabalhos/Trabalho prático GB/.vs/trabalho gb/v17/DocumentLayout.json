@@ -1,57 +1,49 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\",
+  "WorkspaceRootPath": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:Sistema.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:ReadingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:ReadingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:Sistema.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ComputingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:ComputingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ComputingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:ComputingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:WritingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:FilaProcessos.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:FilaProcessos.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:CalculaExpressao.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:WritingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:Sistema.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:Sistema.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:WritingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:ReadingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:FilaProcessos.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ComputingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:ComputingProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:FilaProcessos.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:CalculaExpressao.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:CalculaExpressao.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -62,176 +54,146 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WritingProcess.h",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.h",
+              "RelativeDocumentMoniker": "WritingProcess.h",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.h",
+              "RelativeToolTip": "WritingProcess.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-10T20:49:37.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ReadingProcess.cpp",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.cpp",
-              "RelativeDocumentMoniker": "ReadingProcess.cpp",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.cpp",
-              "RelativeToolTip": "ReadingProcess.cpp",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAsAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-10T15:52:39.586Z",
+              "Title": "Sistema.h",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.h",
+              "RelativeDocumentMoniker": "Sistema.h",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.h",
+              "RelativeToolTip": "Sistema.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-10T20:33:00.32Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Sistema.h",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.h",
-              "RelativeDocumentMoniker": "Sistema.h",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.h",
-              "RelativeToolTip": "Sistema.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-10T15:25:05.824Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ComputingProcess.cpp",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ComputingProcess.cpp",
-              "RelativeDocumentMoniker": "ComputingProcess.cpp",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ComputingProcess.cpp",
-              "RelativeToolTip": "ComputingProcess.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-10T14:37:24.435Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ReadingProcess.h",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.h",
-              "RelativeDocumentMoniker": "ReadingProcess.h",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.h",
-              "RelativeToolTip": "ReadingProcess.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAACCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-10T13:49:11.014Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Main.cpp",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Main.cpp",
-              "RelativeDocumentMoniker": "Main.cpp",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Main.cpp",
-              "RelativeToolTip": "Main.cpp",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-09T04:47:04.231Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ComputingProcess.h",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ComputingProcess.h",
-              "RelativeDocumentMoniker": "ComputingProcess.h",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ComputingProcess.h",
-              "RelativeToolTip": "ComputingProcess.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-10T13:49:55.526Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Sistema.cpp",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.cpp",
-              "RelativeDocumentMoniker": "Sistema.cpp",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.cpp",
-              "RelativeToolTip": "Sistema.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-10T00:05:46.2Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FilaProcessos.h",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.h",
-              "RelativeDocumentMoniker": "FilaProcessos.h",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.h",
-              "RelativeToolTip": "FilaProcessos.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-10T13:28:29.006Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "FilaProcessos.cpp",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.cpp",
-              "RelativeDocumentMoniker": "FilaProcessos.cpp",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.cpp",
-              "RelativeToolTip": "FilaProcessos.cpp",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFsAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-10T13:29:47.782Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "WritingProcess.h",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.h",
-              "RelativeDocumentMoniker": "WritingProcess.h",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.h",
-              "RelativeToolTip": "WritingProcess.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-10T01:03:38.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CalculaExpressao.cpp",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.cpp",
-              "RelativeDocumentMoniker": "CalculaExpressao.cpp",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.cpp",
-              "RelativeToolTip": "CalculaExpressao.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-10T14:34:00.235Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "WritingProcess.cpp",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.cpp",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.cpp",
               "RelativeDocumentMoniker": "WritingProcess.cpp",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.cpp",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.cpp",
               "RelativeToolTip": "WritingProcess.cpp",
-              "ViewState": "AgIAAAoAAABgMzMzMzMrwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-10T13:52:08.971Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 5,
+              "Title": "ReadingProcess.h",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.h",
+              "RelativeDocumentMoniker": "ReadingProcess.h",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.h",
+              "RelativeToolTip": "ReadingProcess.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-10T20:23:53.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Main.cpp",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Main.cpp",
+              "RelativeDocumentMoniker": "Main.cpp",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Main.cpp",
+              "RelativeToolTip": "Main.cpp",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-09T04:47:04.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Sistema.cpp",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.cpp",
+              "RelativeDocumentMoniker": "Sistema.cpp",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.cpp",
+              "RelativeToolTip": "Sistema.cpp",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAwD8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-10T00:05:46.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FilaProcessos.cpp",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.cpp",
+              "RelativeDocumentMoniker": "FilaProcessos.cpp",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.cpp",
+              "RelativeToolTip": "FilaProcessos.cpp",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAFsAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-10T13:29:47.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FilaProcessos.h",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.h",
+              "RelativeDocumentMoniker": "FilaProcessos.h",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.h",
+              "RelativeToolTip": "FilaProcessos.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-10T13:28:29.006Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ComputingProcess.h",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ComputingProcess.h",
+              "RelativeDocumentMoniker": "ComputingProcess.h",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ComputingProcess.h",
+              "RelativeToolTip": "ComputingProcess.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-10T13:49:55.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CalculaExpressao.cpp",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.cpp",
+              "RelativeDocumentMoniker": "CalculaExpressao.cpp",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.cpp",
+              "RelativeToolTip": "CalculaExpressao.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-10T14:34:00.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "CalculaExpressao.h",
-              "DocumentMoniker": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.h",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.h",
               "RelativeDocumentMoniker": "CalculaExpressao.h",
-              "ToolTip": "C:\\Users\\jffec\\Documents\\PROJETOSC\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.h",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\CalculaExpressao.h",
               "RelativeToolTip": "CalculaExpressao.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-10T14:26:35.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T14:26:35.313Z"
             }
           ]
         }

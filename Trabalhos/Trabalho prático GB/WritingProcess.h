@@ -9,7 +9,7 @@ using namespace std;
 class WritingProcess :public Processo {
 public:
 	WritingProcess();
-	WritingProcess(int pid,string calculo, FilaProcessos* fila);
+	WritingProcess(int pid,string calculo);
 	~WritingProcess();
 	void imprimeProcesso();
 	void execute();
