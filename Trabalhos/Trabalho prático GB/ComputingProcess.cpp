@@ -3,16 +3,24 @@
 ComputingProcess::ComputingProcess():Processo() {
 
 }
-ComputingProcess::ComputingProcess(int pid, string equacao):Processo(pid) {
+
+ComputingProcess::ComputingProcess(int pid, string equacao):Processo(pid), calculo(equacao) {
 	PID = pid;
-	calculo = equacao;
+	calculoOriginal = equacao;
+
 }
+
 ComputingProcess::~ComputingProcess() {
 
 }
 
 void ComputingProcess:: execute() {
-	//logica do calculo.
+    cout << "--- Executando Processo de Calculo (PID: " << getPid() << ") ---" << endl;
+    cout << "  Calculando: " << calculoOriginal << endl;
+
+    double resultado = calculo.calcular();
+
+    cout << "  Resultado: " << resultado << endl;
 }
 
 void ComputingProcess::imprimeProcesso() {

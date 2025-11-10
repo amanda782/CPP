@@ -2,7 +2,8 @@
 #include <string>
 
 Sistema::Sistema() {
-	
+	fila = new FilaProcessos(); 
+	pidCounter = 1;
 }
 Sistema::~Sistema() { 
 
@@ -18,6 +19,18 @@ void Sistema::saveFila() {
 }
 void Sistema::carregarFila() {
 
+}
+void Sistema::adicionarProcesso(Processo* p) {
+	fila->inserir(p);
+	cout << "Processo (PID " << p->getPid() << ") adicionado a fila." << endl;
+}
+FilaProcessos& Sistema::getFila(){
+	return *fila;
+}
+int Sistema::getProximoPid() {
+	int pidAtual = pidCounter;
+	pidCounter++; // incrementa para o próximo
+	return pidAtual; // retorna o PID que acabou de ser usado
 }
 void Sistema::iniciarSistema() {
 	cout << "Bem vindo ao POOL DE PROCESSOS" << endl;

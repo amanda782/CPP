@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Processo.h"
+#include "CalculaExpressao.h"
 
 using namespace std;
 
@@ -11,8 +12,9 @@ public:
 	~ComputingProcess();
 	void execute();
 	void imprimeProcesso();
-	// metodo que recebe a string e faz o calculo (retorna o resultado) "execute"
+	// metodo que recebe a string e faz o calculo (retorna/imprime o resultado) "execute"
 
 private:
-	string calculo;
+	string calculoOriginal;
+	CalculaExpressao calculo;
 };

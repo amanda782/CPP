@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CalculaExpressao.h" />
     <ClInclude Include="Sistema.h" />
     <ClInclude Include="ComputingProcess.h" />
     <ClInclude Include="FilaProcessos.h" />
@@ -132,6 +133,7 @@
     <ClInclude Include="WritingProcess.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CalculaExpressao.cpp" />
     <ClCompile Include="ComputingProcess.cpp" />
     <ClCompile Include="FilaProcessos.cpp" />
     <ClCompile Include="Main.cpp" />
