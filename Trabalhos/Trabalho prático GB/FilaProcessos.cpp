@@ -37,10 +37,10 @@ Processo* FilaProcessos::removerProximo() { // sempre remove o primeiro da fila 
 		return nullptr; // avisa que nao tem nada pra remover
 
 	Processo* primeiro = head->processo; // salva o primeiro PROCESSO da fila
-	Node* noRemover = head; // salva o primeiro NODE da fila
+	Node* nodeRemover = head; // salva o primeiro NODE da fila
 	Node* proximo = head->proximo; // salva o proximo pra atualizar como primeiro da fila
 
-	delete noRemover; // deleta o node do primeiro da fila
+	delete nodeRemover; // deleta o node do primeiro da fila
 	head = proximo; // define o segundo como primeiro da fila
 
 	if (head==nullptr) // se o que removemos fosse o unico na fila
