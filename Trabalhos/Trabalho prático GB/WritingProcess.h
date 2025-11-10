@@ -11,7 +11,6 @@ public:
 	WritingProcess();
 	WritingProcess(int pid,string calculo, FilaProcessos* fila);
 	~WritingProcess();
-	void execute();
 	void imprimeProcesso();
 	void execute();
 

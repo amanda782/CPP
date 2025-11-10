@@ -11,7 +11,7 @@ public:
 	~ComputingProcess();
 	void execute();
 	void imprimeProcesso();
-	// metodo que recebe a string e faz o calculo (retorna o resultado)
+	// metodo que recebe a string e faz o calculo (retorna o resultado) "execute"
 
 private:
 	string calculo;

@@ -18,6 +18,7 @@ public:
 	Processo* removerProximo();
 	Processo* removerPorPid(int pid);
 	void imprimirFila();
+	// buscar na fila, retorna bool
 
 private:
 	Node* head;
