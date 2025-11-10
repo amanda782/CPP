@@ -3,8 +3,9 @@
 ComputingProcess::ComputingProcess():Processo() {
 
 }
-ComputingProcess::ComputingProcess(int pid):Processo(pid) {
+ComputingProcess::ComputingProcess(int pid, string equacao):Processo(pid) {
 	PID = pid;
+	calculo = equacao;
 }
 ComputingProcess::~ComputingProcess() {
 

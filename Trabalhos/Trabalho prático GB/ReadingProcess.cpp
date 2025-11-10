@@ -4,7 +4,7 @@
 ReadingProcess::ReadingProcess():Processo() {
 
 }
-ReadingProcess::ReadingProcess(int pid):Processo(pid) {
+ReadingProcess::ReadingProcess(int pid, FilaProcessos* fila):Processo(pid) {
 	PID = pid;
 }
 ReadingProcess::~ReadingProcess() {

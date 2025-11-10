@@ -1,12 +1,13 @@
 #include "FilaProcessos.h"
 #include "ReadingProcess.h"
 #include "ComputingProcess.h"
-
+#include "Sistema.h"
 #include <iostream>
 
 using namespace std;
 
 int main() {
+	/*
 	FilaProcessos minhaFila;
 	Processo* p1 = new ReadingProcess(10); // SEMPRE INSERIR USANDO NEW. se não crasha no delete
 	Processo* p2 = new ComputingProcess(11);
@@ -17,7 +18,12 @@ int main() {
 	minhaFila.removerPorPid(11);
 
 	minhaFila.imprimirFila();
+	*/
 
+	Sistema meuSistema;
+	meuSistema.iniciarSistema();
+
+	return 0;
 
 	
 }
