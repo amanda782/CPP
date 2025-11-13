@@ -3,6 +3,7 @@
 #include "Processo.h"
 #include "CalculaExpressao.h"
 
+
 using namespace std;
 
 class ComputingProcess :public Processo {
@@ -12,7 +13,7 @@ public:
 	~ComputingProcess();
 	void execute();
 	void imprimeProcesso();
-	// metodo que recebe a string e faz o calculo (retorna/imprime o resultado) "execute"
+	void save(ofstream& arquivo);
 
 private:
 	string calculoOriginal;

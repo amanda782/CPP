@@ -5,18 +5,7 @@ FilaProcessos::FilaProcessos() {
 	tail = nullptr;
 }
 FilaProcessos::~FilaProcessos() {
-	Node* novo = head;
-	Node* proximo = nullptr;
-
-	while (novo != nullptr) {
-		proximo = novo->proximo; //salva o proximo pra nao perdermos
-		delete novo->processo; // deleta o PROCESSO 
-		delete novo; // deleta o NODE 
-		novo = proximo; // vai pro proximo da lista, se existir
-	}
-	//zeramos a lista por garantia
-	head = nullptr;
-	tail = nullptr;
+	limparFila();
 }
 void FilaProcessos::inserir(Processo* proc) { // recebe o novo processo a ser colocado na fila (sempre no final)
 	Node* novo = new Node; // cria um novo node, chamado NOVO
@@ -91,3 +80,39 @@ void FilaProcessos::imprimirFila() {
 		atual = atual->proximo;
 	}
 }
+bool FilaProcessos::find(int pid) {
+	if (head->processo->getPid() == pid) {
+		return true;
+	}
+
+	Node* atual = head;
+	while (atual != nullptr) {
+		if (atual->processo->getPid() == pid)
+			return true;
+	}
+	return false;
+}
+
+void FilaProcessos::salvarFila(ofstream& arquivo) {
+	Node* atual = head;
+	while (atual != nullptr) {
+		atual->processo->save(arquivo);
+		atual = atual->proximo;
+	}
+}
+
+void FilaProcessos::limparFila() {
+	Node* novo = head;
+	Node* proximo = nullptr;
+
+	while (novo != nullptr) {
+		proximo = novo->proximo; //salva o proximo pra nao perdermos
+		delete novo->processo; // deleta o PROCESSO 
+		delete novo; // deleta o NODE 
+		novo = proximo; // vai pro proximo da lista, se existir
+	}
+	//zeramos a lista por garantia
+	head = nullptr;
+	tail = nullptr;
+}
+

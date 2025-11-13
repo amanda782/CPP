@@ -8,8 +8,8 @@
 using namespace std; 
 
 //referências devem ser "ligadas" (inicializadas) no exato momento em que são criadas. por isso sistema(s), e não sistema = s
-ReadingProcess::ReadingProcess(int pid, Sistema s):Processo(pid), sistema(s) {
-	PID = pid;
+ReadingProcess::ReadingProcess(int pid, Sistema& s):Processo(pid), sistema(s) {
+	// o pid ja é tratado no construtor da classe mãe
 }
 ReadingProcess::~ReadingProcess() {}
 
@@ -54,5 +54,9 @@ void ReadingProcess::execute() {
 void ReadingProcess::imprimeProcesso() {
 	cout << "Tipo do processo: ReadingProcess" << endl;
 	cout << "PID do processo: " << PID << endl;
+}
+void ReadingProcess::save(ofstream& arquivo) {
+	// Formato: TIPO;PID;DADOS...
+	arquivo << "READ;" << getPid() <<endl;
 }
 

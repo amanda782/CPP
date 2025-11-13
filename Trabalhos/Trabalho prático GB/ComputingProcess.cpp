@@ -1,4 +1,5 @@
 #include "ComputingProcess.h"
+#include <fstream>
 
 ComputingProcess::ComputingProcess():Processo() {
 
@@ -26,4 +27,8 @@ void ComputingProcess:: execute() {
 void ComputingProcess::imprimeProcesso() {
 	cout << "Tipo do processo: ComputingProcess" << endl;
 	cout << "PID do processo: " << PID << endl;
+}
+
+void ComputingProcess::save(ofstream& arquivo) {
+    arquivo << "COMPUTE;" << getPid() << ";" << this->calculoOriginal <<endl;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ public:
 	virtual void execute() = 0; // classe virtual PURA
 	int getPid();
 	virtual void imprimeProcesso() = 0;
+	virtual void save(ofstream& arquivo) = 0;
 
 protected:
 	int PID;

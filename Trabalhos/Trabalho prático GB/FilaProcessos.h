@@ -18,9 +18,11 @@ public:
 	Processo* removerProximo();
 	Processo* removerPorPid(int pid);
 	void imprimirFila();
-	// buscar na fila, retorna bool
+	bool find(int pid);
+	void salvarFila(ofstream& arquivo);
+	void limparFila();
 
-private:
+protected:
 	Node* head;
 	Node* tail;
 };

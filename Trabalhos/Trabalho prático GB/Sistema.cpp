@@ -1,6 +1,13 @@
 #include "Sistema.h"
 #include <string>
+#include "WritingProcess.h"
+#include "ComputingProcess.h"
+#include "Processo.h"
+#include "PrintingProcess.h"
+#include "CalculaExpressao.h"
 #include "ReadingProcess.h"
+#include <fstream>
+#include <sstream>
 
 Sistema::Sistema(FilaProcessos* minhaFila) {
 	fila = minhaFila;
@@ -15,12 +22,6 @@ void Sistema::criarProcesso(int pid) {
 void Sistema::executarPorPid(int pid) {
 
 }
-void Sistema::saveFila() {
-
-}
-void Sistema::carregarFila() {
-
-}
 void Sistema::adicionarProcesso(Processo* p) {
 	fila->inserir(p);
 	cout << "Processo (PID " << p->getPid() << ") adicionado a fila." << endl;
@@ -31,21 +32,23 @@ FilaProcessos& Sistema::getFila(){
 int Sistema::getProximoPid() {
 	int pidAtual = pidCounter;
 	pidCounter++; // incrementa para o próximo
-	return pidAtual; // retorna o PID que acabou de ser usado
+	return pidAtual; // retorna o PID que deve ser usado
 }
 void Sistema::iniciarSistema() {
 	cout << "Bem vindo ao POOL DE PROCESSOS" << endl;
 	while (1) {
 		cout << "O que voce deseja fazer: " << endl;
-		cout << "1: Criar um processo de escrita (writting process) " << endl;
-		cout << "2: Criar um processo de leitura (reading process)" << endl;
-		cout << "3: Criar um processo de impressão (printing process)" << endl;
+		cout << "1: Criar um processo de escrita" << endl;
+		cout << "2: Criar um processo de leitura" << endl;
+		cout << "3: Criar um processo de impressao" << endl;
 		cout << "4: Executar o proximo processo da fila" << endl;
 		cout << "5: Executar um processo especifico (por pid)" << endl;
 		cout << "6: Imprimir a fila" << endl;
-		cout << "4: Sair" << endl;
+		cout << "7: Salvar fila atual" << endl; 
+		cout << "8: Carregar fila" << endl;     // (próximo passo)
+		cout << "9: Sair" << endl;
 
-		int numero;
+		int numero, pid_procurado;
 		cin >> numero; // armazena a resposta do menu principal
 		string expressao;
 
@@ -54,23 +57,136 @@ void Sistema::iniciarSistema() {
 			cout << "Digite a expressao matematica a ser gravada: " << endl;
 			cin.ignore(); // ignora o enter do ultimo cin
 			getline(cin, expressao); // armazena a string do calculo em EXPRESSAO
-			Processo* p = new WritingProcess(pidCounter, expressao);
+			int PID = getProximoPid(); // pega o atual e ja incrementa para o proximo, nao precisamos nos preocupar com isso
+			Processo* p = new WritingProcess(PID, expressao);
 			fila->inserir(p);
-			cout << "Processo de PID: " << pidCounter << " adicionado a fila. " << endl;
-			pidCounter++;
+			cout << "Processo de escrita (PID: " << PID << ") adicionado a fila. " << endl;
 			break;
 		}
-		case 2:
-			//cria um processo de leitura
+		case 2: {
+			int PID = getProximoPid();
+			// 'this' é um ponteiro (Sistema*), mas o construtor espera
+			// uma referência (Sistema&). O '*' faz o "dereference".
+			Processo* p = new ReadingProcess(PID, *this);
+			fila->inserir(p);
+			cout << "Processo de leitura (PID: " << PID << ") adicionado a fila. " << endl;
 			break;
+		}
+		case 3: {
+			int PID = getProximoPid();
+			Processo* p = new PrintingProcess(PID, this->fila);
+			fila->inserir(p);
+			cout << "Processo de impressao (PID: " << PID << ") adicionado a fila. " << endl;
+			break;
+		}
+		case 4: {
+			Processo* p = fila->removerProximo();
+			p->execute();
+			delete p;
+			break;
+		}
+		case 5: {
+			cout << "Digite o pid do processo que voce gostaria de executar: " << endl;
+			cin >> pid_procurado;
+			Processo* p = fila->removerPorPid(pid_procurado);
 
-		case 3:
-			//cria processo de impressao
+			if (p != nullptr) {
+				p->execute();
+				delete p;     // limpar a memoria dps de cada execute
+			}
+			else {
+				cout << "Processo nao encontrado na fila." << endl;
+			}
 			break;
-		case 4:
-			return;
+		}
 		case 6:
 			fila->imprimirFila();
+			break;
+		case 7: { 
+			saveFila();
+			break;
+		}
+		case 8:
+			carregarFila();
+			break;
+		case 9:
+			return;
 		}
 	}
+}
+
+void Sistema::saveFila() {
+	std::cout << "Salvando fila no arquivo 'fila_salva.txt'..." << std::endl;
+
+	ofstream arquivo("fila_salva.txt"); // abre o arquivo, apagando o anterior
+
+	if (!arquivo.is_open()) {
+		std::cout << "ERRO: Nao foi possivel abrir o arquivo para salvar." << std::endl;
+		return;
+	}
+
+	fila->salvarFila(arquivo); // pede pra fila se salvar
+
+	arquivo.close(); // fecha o arquivo
+	cout << "Fila salva com sucesso." << std::endl;
+}
+
+void Sistema::carregarFila() {
+	std::cout << "Carregando fila do 'fila_salva.txt'..." <<endl;
+
+	std::ifstream arquivo("fila_salva.txt"); // abre o arquivo
+	if (!arquivo.is_open()) {
+		std::cout << "AVISO: 'fila_salva.txt' nao encontrado. Nao foi possivel inicializar a fila." << std::endl;
+		return;
+	}
+
+	fila->limparFila(); // limpa a fila atual antes de comecar
+
+	string linha, tipo, dados;
+	int pid;
+	int maxPid = 0; // para atualizar o pidCounter
+
+	// lê o arquivo linha por linha
+	while (getline(arquivo, linha)) {
+		if (linha.empty()) 
+			continue; // pula linhas em branco
+
+		stringstream ss(linha);
+		char delimitador; // para ignorar o ponto e vírgula
+
+		getline(ss, tipo, ';'); // lê o TIPO
+		ss >> pid >> delimitador;    // lê o PID e o ';'
+		getline(ss, dados);     // lê o resto (a expressão, se houver)
+
+		Processo* p = nullptr;
+
+		// recria o Processo correto baseado no TIPO
+		if (tipo == "COMPUTE") {
+			p = new ComputingProcess(pid, dados); //
+		}
+		else if (tipo == "WRITE") {
+			p = new WritingProcess(pid, dados);
+		}
+		else if (tipo == "READ") {
+			p = new ReadingProcess(pid, *this); // 'this' é o Sistema
+		}
+		else if (tipo == "PRINT") {
+			p = new PrintingProcess(pid, this->fila); //
+		}
+
+		if (p != nullptr) {
+			fila->inserir(p); //
+			if (pid > maxPid) {
+				maxPid = pid; // guarda o maior PID encontrado
+			}
+		}
+	}
+
+	arquivo.close();
+
+	// atualiza o pidCounter para evitar PIDs duplicados
+	pidCounter = maxPid + 1; //
+
+	cout << "Fila carregada com sucesso." <<endl;
+	fila->imprimirFila();
 }

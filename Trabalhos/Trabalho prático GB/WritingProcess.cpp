@@ -17,6 +17,7 @@ WritingProcess::~WritingProcess() {
 void WritingProcess::imprimeProcesso() {
 	cout << "Tipo do processo: WritingProcess" << endl;
 	cout << "PID do processo: " << PID << endl;
+	cout << "Expressao escrita: " << calculo << endl;
 }
 
 void WritingProcess::execute() {
@@ -36,6 +37,9 @@ void WritingProcess::execute() {
 
 	cout << "-> Processo " << getPid() << " executado: expressao gravada no arquivo." << endl;
 	
+}
+void WritingProcess::save(ofstream& arquivo) {
+	arquivo << "WRITE;" << getPid()<<";"<<this->calculo << endl;
 }
 
 

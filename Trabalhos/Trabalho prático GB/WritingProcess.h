@@ -13,6 +13,7 @@ public:
 	~WritingProcess();
 	void imprimeProcesso();
 	void execute();
+	void save(ofstream& arquivo);
 
 protected:
 	string calculo;

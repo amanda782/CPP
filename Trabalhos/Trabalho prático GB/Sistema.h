@@ -1,12 +1,8 @@
 #pragma once
 #include <iostream>
 #include "FilaProcessos.h"
-#include "WritingProcess.h"
-#include "ComputingProcess.h"
 
-#include "Processo.h"
-#include "PrintingProcess.h"
-#include "CalculaExpressao.h"
+using namespace std;
 
 class Sistema {
 public:
