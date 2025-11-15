@@ -1,0 +1,4 @@
+WRITE;1;5-9
+WRITE;2;banana
+READ;3
+PRINT;4

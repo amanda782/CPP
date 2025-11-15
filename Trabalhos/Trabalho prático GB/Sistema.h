@@ -9,7 +9,6 @@ public:
 	Sistema(FilaProcessos* minhaFila);
 	~Sistema();
 
-	void criarProcesso(int pid); //porque passa pid por parametro (duvida) 
 	void executarProximo();
 	void executarPorPid(int pid);
 	void saveFila();

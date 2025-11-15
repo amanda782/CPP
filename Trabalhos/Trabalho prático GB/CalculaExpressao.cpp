@@ -34,7 +34,7 @@ double CalculaExpressao::calcular() {
         }
         return operando1 / operando2;
     default:
-        cout << "Erro: Operacao invalida ('" << sinalOperacao << "')!" << endl;
+        cout << "Erro: Operacao invalida. Nao foi possivel executar esse calculo. " << endl;
         return 0.0; 
     }
 }
