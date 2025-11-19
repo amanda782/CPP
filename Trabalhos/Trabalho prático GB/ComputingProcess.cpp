@@ -27,6 +27,7 @@ void ComputingProcess:: execute() {
 void ComputingProcess::imprimeProcesso() {
 	cout << "Tipo do processo: ComputingProcess" << endl;
 	cout << "PID do processo: " << PID << endl;
+    cout << "Expressao a ser executada: " << calculoOriginal << endl;
 }
 
 void ComputingProcess::save(ofstream& arquivo) {

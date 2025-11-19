@@ -7,6 +7,10 @@ FilaProcessos::FilaProcessos() {
 FilaProcessos::~FilaProcessos() {
 	limparFila();
 }
+FilaProcessos::FilaProcessos(Node* primeiro) {
+	head = primeiro;
+	tail = primeiro;
+}
 void FilaProcessos::inserir(Processo* proc) { // recebe o novo processo a ser colocado na fila (sempre no final)
 	Node* novo = new Node; // cria um novo node, chamado NOVO
 	novo->processo = proc;
@@ -81,14 +85,13 @@ void FilaProcessos::imprimirFila() {
 	}
 }
 bool FilaProcessos::find(int pid) {
-	if (head->processo->getPid() == pid) {
-		return true;
-	}
-
 	Node* atual = head;
+
 	while (atual != nullptr) {
 		if (atual->processo->getPid() == pid)
 			return true;
+
+		atual = atual->proximo;
 	}
 	return false;
 }

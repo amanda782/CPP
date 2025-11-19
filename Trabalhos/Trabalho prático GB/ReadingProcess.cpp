@@ -18,7 +18,7 @@ void ReadingProcess::execute() {
 	ifstream arquivoEntrada(nomeArquivo);
 
 	if (!arquivoEntrada.is_open()) {
-		cout << "  AVISO: Arquivo " << nomeArquivo << " nao encontrado. Nenhuma expressao lida." << endl;
+		cout << "AVISO: Arquivo " << nomeArquivo << " nao encontrado. Nenhuma expressao lida." << endl;
 		return; 
 	}
 
@@ -29,7 +29,7 @@ void ReadingProcess::execute() {
 		if (expressaoMat.empty()) //pula linhas em branco e segue o baile
 			continue;
 
-		cout << "  Lendo expressao: '" << expressaoMat << "'" << endl;
+		cout << "Lendo expressao: '" << expressaoMat << "'" << endl;
 		
 		int novoPid = sistema.getProximoPid(); // pega um pid unico p ele 
 
@@ -40,15 +40,15 @@ void ReadingProcess::execute() {
 		processosCriados++; 
 	}
 	arquivoEntrada.close();
-	cout << "  Leitura concluida. " << processosCriados << " processos adicionados a fila." << endl;
+	cout << "Leitura concluida. " << processosCriados << " processos adicionados a fila." << endl;
 
 	ofstream arquivoSaida(nomeArquivo, ofstream::trunc); // trunc é o que apaga totalmente o arquivo 
 	if (arquivoSaida.is_open()) {
 		arquivoSaida.close();
-		cout << "  Arquivo " << nomeArquivo << " foi limpo." << endl;
+		cout << "Arquivo " << nomeArquivo << " foi limpo." << endl;
 	}
 	else {
-		cout << "  ERRO: Nao foi possivel limpar o arquivo " << nomeArquivo << "." << endl;
+		cout << "ERRO: Nao foi possivel limpar o arquivo " << nomeArquivo << "." << endl;
 	}
 }
 void ReadingProcess::imprimeProcesso() {

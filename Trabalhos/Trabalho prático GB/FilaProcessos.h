@@ -12,6 +12,7 @@ struct Node {
 class FilaProcessos {
 public:
 	FilaProcessos();
+	FilaProcessos(Node* primeiro);
 	~FilaProcessos();
 
 	void inserir(Processo* proc); // add no final da fila

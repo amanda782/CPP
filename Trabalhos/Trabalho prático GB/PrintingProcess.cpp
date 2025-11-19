@@ -7,13 +7,14 @@ PrintingProcess::PrintingProcess(int pid, FilaProcessos* fila):Processo(pid) {
 	this->fila = fila;
 }
 PrintingProcess::PrintingProcess():Processo() {
-	
+	fila = nullptr;
 }
 PrintingProcess::~PrintingProcess() {
 
 }
 void PrintingProcess::execute() {
-	
+	cout << "Executando processo de pid: " << PID << " (PrintingProcess)" << endl;
+	fila->imprimirFila();
 }
 void PrintingProcess::imprimeProcesso() {
 	cout << "Tipo do processo: PrintingProcess" << endl;

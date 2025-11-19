@@ -8,6 +8,7 @@
 #include "ReadingProcess.h"
 #include <fstream>
 #include <sstream>
+#include "FilaProcessos.h"
 
 Sistema::Sistema(FilaProcessos* minhaFila) {
 	fila = minhaFila;
@@ -16,11 +17,16 @@ Sistema::Sistema(FilaProcessos* minhaFila) {
 Sistema::~Sistema() { 
 
 }
-void Sistema::criarProcesso(int pid) {
-
-}
 void Sistema::executarPorPid(int pid) {
+	Processo* p = fila->removerPorPid(pid);
 
+	if (p != nullptr) {
+		p->execute();
+		delete p;     // limpar a memoria dps de cada execute
+	}
+	else {
+		cout << "Processo nao encontrado na fila." << endl;
+	}
 }
 void Sistema::adicionarProcesso(Processo* p) {
 	fila->inserir(p);
@@ -37,16 +43,15 @@ int Sistema::getProximoPid() {
 void Sistema::iniciarSistema() {
 	cout << "Bem vindo ao POOL DE PROCESSOS" << endl;
 	while (1) {
-		cout << "O que voce deseja fazer: " << endl;
+		cout << endl<<"O que voce deseja fazer: " << endl;
 		cout << "1: Criar um processo de escrita" << endl;
 		cout << "2: Criar um processo de leitura" << endl;
 		cout << "3: Criar um processo de impressao" << endl;
 		cout << "4: Executar o proximo processo da fila" << endl;
 		cout << "5: Executar um processo especifico (por pid)" << endl;
-		cout << "6: Imprimir a fila" << endl;
-		cout << "7: Salvar fila atual" << endl; 
-		cout << "8: Carregar fila" << endl;     // (próximo passo)
-		cout << "9: Sair" << endl;
+		cout << "6: Salvar fila atual" << endl; 
+		cout << "7: Carregar fila" << endl;     // (próximo passo)
+		cout << "8: Sair" << endl << endl;
 
 		int numero, pid_procurado;
 		cin >> numero; // armazena a resposta do menu principal
@@ -80,37 +85,27 @@ void Sistema::iniciarSistema() {
 			break;
 		}
 		case 4: {
-			Processo* p = fila->removerProximo();
-			p->execute();
-			delete p;
+			executarProximo();
 			break;
 		}
 		case 5: {
 			cout << "Digite o pid do processo que voce gostaria de executar: " << endl;
 			cin >> pid_procurado;
-			Processo* p = fila->removerPorPid(pid_procurado);
-
-			if (p != nullptr) {
-				p->execute();
-				delete p;     // limpar a memoria dps de cada execute
-			}
-			else {
-				cout << "Processo nao encontrado na fila." << endl;
-			}
+			executarPorPid(pid_procurado);
 			break;
 		}
-		case 6:
-			fila->imprimirFila();
-			break;
-		case 7: { 
+		case 6: { 
 			saveFila();
 			break;
 		}
-		case 8:
+		case 7:
 			carregarFila();
 			break;
-		case 9:
+		case 8:
 			return;
+		default:
+			cout << "Opcao invalida. Por favor, escolha um numero de 1 a 9." << endl;
+			break; 
 		}
 	}
 }
@@ -189,4 +184,15 @@ void Sistema::carregarFila() {
 
 	cout << "Fila carregada com sucesso." <<endl;
 	fila->imprimirFila();
+}
+
+void Sistema::executarProximo() {
+	Processo* p = fila->removerProximo();
+	if (p!= nullptr) {
+		p->execute();
+		delete p;
+	}
+	else {
+		cout << "A fila esta vazia." << endl;
+	}
 }
