@@ -12,7 +12,7 @@ template <typename T>
 struct Node {
     T dado;
     Node<T>* proximo;
-    int prioridade;
+   
 
     Node(T val) {
         dado = val;
@@ -105,7 +105,7 @@ T Fila<T>::front() {
 
 template <typename T>
 bool Fila<T>::isEmpty() {
-    return quantidade == 0; // (ou head == nullptr)
+    return quantidade == 0; // (ou head == nullptr). se a quantidade for igual a zero vai retornar verdadeiro.
 }
 
 template <typename T>
@@ -151,7 +151,7 @@ T Fila<T>::removerEspecifico(T dadoParaRemover) {
         if (val == dadoParaRemover && !jaRemoveu) {
             // entao uardamos o valor e NÃO devolvemos para a fila (push)
             valorRetornado = val;
-            jaRemoveu = true;
+            jaRemoveu = true; // a partir daqui, nunca mais entra nessa verificacao/bloco de codigo
             // o item foi removido pois não demos push
         }
         else {
@@ -171,9 +171,9 @@ void Fila<T>::print() {
     for (int i = 0; i < voltas; i++) {
         T val = this->pop(); //cria uma nova variavel pra armazenar o primeiro da fila
 
-        cout << "[" << val << "] "; // Imprime
+        cout << "[" << val << "] "; // imprime
 
-        this->push(val); // Devolve pro final
+        this->push(val); // devolve pro final
     }
     cout << "<- FIM" << endl;
 }
