@@ -22,8 +22,10 @@ public:
 	bool find(int pid);
 	void salvarFila(ofstream& arquivo);
 	void limparFila();
+	int size();
 
 protected:
 	Node* head;
 	Node* tail;
+	int tamanho;
 };

@@ -3,6 +3,7 @@
 FilaProcessos::FilaProcessos() {
 	head = nullptr;
 	tail = nullptr;
+	tamanho = 0;
 }
 FilaProcessos::~FilaProcessos() {
 	limparFila();
@@ -10,6 +11,7 @@ FilaProcessos::~FilaProcessos() {
 FilaProcessos::FilaProcessos(Node* primeiro) {
 	head = primeiro;
 	tail = primeiro;
+	tamanho = 0;
 }
 void FilaProcessos::inserir(Processo* proc) { // recebe o novo processo a ser colocado na fila (sempre no final)
 	Node* novo = new Node; // cria um novo node, chamado NOVO
@@ -24,6 +26,7 @@ void FilaProcessos::inserir(Processo* proc) { // recebe o novo processo a ser co
 		head = novo; // o novo vai ser o inicio e o fim
 		tail = novo;
 	}
+	tamanho++;
 }
 Processo* FilaProcessos::removerProximo() { // sempre remove o primeiro da fila e entrega pra quem chamou o metodo
 	if (head == nullptr) // se a lista estiver vazia
@@ -38,34 +41,40 @@ Processo* FilaProcessos::removerProximo() { // sempre remove o primeiro da fila 
 
 	if (head==nullptr) // se o que removemos fosse o unico na fila
 		tail = nullptr; // definimos a lista como vazia
-
+	tamanho--;
 	return primeiro; // retornamos o que removemos para posterior processamento
 }
 Processo* FilaProcessos::removerPorPid(int pid) {
 	if (head == nullptr) // se for uma lista vazia
 		return nullptr; // retorna nada
 
-	if (head->processo->getPid() == pid) // nesse caso removemos o primeiro
+	else if (head->processo->getPid() == pid) { // nesse caso removemos o primeiro
 		return removerProximo();  // e ja temos metodo pra isso!!
-
-	Node* atual = head->proximo;
-	Node* anterior = head; // aqui ja verificamos e nao encontramos
-	
-	while (atual!=nullptr) { // vamos percorrer a lista toda
-		if (atual->processo->getPid() == pid) { // procurando pelo pid solicitado. caso encontrado:
-			anterior->proximo = atual -> proximo; // religando a lista, pulando o atual
-			if (tail == atual) // se o que removemos era o ultimo
-				tail = anterior; // fazemos o anterior a ele ser o ultimo
-
-			Processo* encontrado = atual->processo; // guardamos o processo com o pid encontrado
-			delete atual; // deletamos o node da lista
-			return encontrado; //retorna o encontrado
-		}
-		// se nao encontramos, os dois dao um passo:
-		atual = atual->proximo;
-		anterior = anterior->proximo;
-
 	}
+
+	else{
+		int voltas = tamanho;
+		bool jaRemoveu = false;
+		Processo* retornar = nullptr;
+		for (int i = 0; i < voltas; i++) {
+			//tira o primeiro
+			Processo* removido = this->removerProximo();
+
+			//é o que queremos remover? e ainda não removemos?
+			if (removido->getPid() == pid && !jaRemoveu) {
+				// entao uardamos o valor e NÃO devolvemos para a fila (push)
+				retornar = removido;
+				jaRemoveu = true; // a partir daqui, nunca mais entra nessa verificacao/bloco de codigo
+				// o item foi removido pois não demos push
+			}
+			else {
+				//caso nao seja oq queremos, devolvemos para o final da fila
+				this->inserir(removido); //pusha o elemento que acabei de tirar do fim da fila
+			}
+		}
+
+		return retornar;
+		}
 	
 	return nullptr;
 
@@ -117,5 +126,9 @@ void FilaProcessos::limparFila() {
 	//zeramos a lista por garantia
 	head = nullptr;
 	tail = nullptr;
+	tamanho = 0;
 }
 
+int FilaProcessos::size() {
+	return tamanho;
+}

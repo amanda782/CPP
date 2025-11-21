@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:Sistema.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:FilaProcessos.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:WritingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:ReadingProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EFC5393-2E55-48CC-AA87-4BC009F1EC4B}|trabalho gb.vcxproj|solutionrelative:FilaProcessos.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WritingProcess.cpp",
-              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.cpp",
-              "RelativeDocumentMoniker": "WritingProcess.cpp",
-              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\WritingProcess.cpp",
-              "RelativeToolTip": "WritingProcess.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-13T19:12:55.116Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ReadingProcess.cpp",
-              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.cpp",
-              "RelativeDocumentMoniker": "ReadingProcess.cpp",
-              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\ReadingProcess.cpp",
-              "RelativeToolTip": "ReadingProcess.cpp",
-              "ViewState": "AgIAACcAAACQmZmZmZkhwDsAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-13T19:03:17.502Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Sistema.cpp",
-              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.cpp",
-              "RelativeDocumentMoniker": "Sistema.cpp",
-              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\Sistema.cpp",
-              "RelativeToolTip": "Sistema.cpp",
-              "ViewState": "AgIAAGkAAAAA/P//////v3QAAAAAAAAAAAAAAA==",
+              "Title": "FilaProcessos.cpp",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.cpp",
+              "RelativeDocumentMoniker": "FilaProcessos.cpp",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.cpp",
+              "RelativeToolTip": "FilaProcessos.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-13T17:53:08.042Z",
+              "WhenOpened": "2025-11-21T19:49:14.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FilaProcessos.h",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.h",
+              "RelativeDocumentMoniker": "FilaProcessos.h",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\CPP\\CPP\\Trabalhos\\Trabalho pr\u00E1tico GB\\FilaProcessos.h",
+              "RelativeToolTip": "FilaProcessos.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-21T19:49:06.32Z",
               "EditorCaption": ""
             }
           ]
