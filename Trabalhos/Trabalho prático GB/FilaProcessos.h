@@ -17,12 +17,12 @@ public:
 
 	void inserir(Processo* proc); // add no final da fila
 	Processo* removerProximo();
-	Processo* removerPorPid(int pid);
-	void imprimirFila();
+	
 	bool find(int pid);
-	void salvarFila(ofstream& arquivo);
+	
 	void limparFila();
 	int size();
+	Node* topNode();
 
 protected:
 	Node* head;

@@ -14,8 +14,20 @@ PrintingProcess::~PrintingProcess() {
 }
 void PrintingProcess::execute() {
 	cout << "Executando processo de pid: " << PID << " (PrintingProcess)" << endl;
-	fila->imprimirFila();
-}
+		Node* atual = fila->topNode();
+		if (atual == nullptr) {
+			cout << "Fila vazia" << endl;
+			return;
+		}
+
+		cout << "Fila do pool de processos: " << endl;
+		while (atual != nullptr) {
+			atual->processo->imprimeProcesso();
+			cout << endl;
+			atual = atual->proximo;
+		}
+	}
+
 void PrintingProcess::imprimeProcesso() {
 	cout << "Tipo do processo: PrintingProcess" << endl;
 	cout << "PID do processo: " << PID << endl;

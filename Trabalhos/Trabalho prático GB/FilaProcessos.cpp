@@ -44,74 +44,28 @@ Processo* FilaProcessos::removerProximo() { // sempre remove o primeiro da fila 
 	tamanho--;
 	return primeiro; // retornamos o que removemos para posterior processamento
 }
-Processo* FilaProcessos::removerPorPid(int pid) {
-	if (head == nullptr) // se for uma lista vazia
-		return nullptr; // retorna nada
 
-	else if (head->processo->getPid() == pid) { // nesse caso removemos o primeiro
-		return removerProximo();  // e ja temos metodo pra isso!!
-	}
 
-	else{
-		int voltas = tamanho;
-		bool jaRemoveu = false;
-		Processo* retornar = nullptr;
-		for (int i = 0; i < voltas; i++) {
-			//tira o primeiro
-			Processo* removido = this->removerProximo();
-
-			//é o que queremos remover? e ainda não removemos?
-			if (removido->getPid() == pid && !jaRemoveu) {
-				// entao uardamos o valor e NÃO devolvemos para a fila (push)
-				retornar = removido;
-				jaRemoveu = true; // a partir daqui, nunca mais entra nessa verificacao/bloco de codigo
-				// o item foi removido pois não demos push
-			}
-			else {
-				//caso nao seja oq queremos, devolvemos para o final da fila
-				this->inserir(removido); //pusha o elemento que acabei de tirar do fim da fila
-			}
-		}
-
-		return retornar;
-		}
-	
-	return nullptr;
-
-}
-void FilaProcessos::imprimirFila() {
-	Node* atual = head;
-	if (atual == nullptr) {
-		cout << "Fila vazia" << endl;
-		return;
-	}
-
-	cout << "Fila do pool de processos: " << endl;
-	while (atual != nullptr) {
-		atual->processo->imprimeProcesso();
-		cout << endl;
-		atual = atual->proximo;
-	}
-}
 bool FilaProcessos::find(int pid) {
-	Node* atual = head;
+	int voltas = this->tamanho;
+	bool achou = false;
+	for (int i = 0; i < voltas; i++) {
+		//tira o primeiro
+		Processo* removido = removerProximo();
 
-	while (atual != nullptr) {
-		if (atual->processo->getPid() == pid)
-			return true;
+		//é o que estamos procurando? e ainda não achamos?
+		if (removido->getPid() == pid && !achou) {
+			achou = true; // a partir daqui, nunca mais entra nessa verificacao/bloco de codigo
 
-		atual = atual->proximo;
+		}
+
+		//sempre devolvemos pro final da fila
+		inserir(removido); //pusha o elemento que acabei de tirar do fim da fila
+
 	}
-	return false;
+	return achou;
 }
 
-void FilaProcessos::salvarFila(ofstream& arquivo) {
-	Node* atual = head;
-	while (atual != nullptr) {
-		atual->processo->save(arquivo);
-		atual = atual->proximo;
-	}
-}
 
 void FilaProcessos::limparFila() {
 	Node* novo = head;
@@ -131,4 +85,8 @@ void FilaProcessos::limparFila() {
 
 int FilaProcessos::size() {
 	return tamanho;
+}
+
+Node* FilaProcessos::topNode() {
+	return head;
 }

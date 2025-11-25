@@ -14,6 +14,9 @@ public:
 	void saveFila();
 	void carregarFila();
 	void iniciarSistema();
+	Processo* removerPorPid(int pid);
+	void salvarFila(ofstream& arquivo);
+	void imprimirFila();
 
 	void adicionarProcesso(Processo* p); // pega o processo que já foi criado e adiciona na fila. (readingprocess)
 	int getProximoPid(); // garante que não tenham pid repetido. incrementa

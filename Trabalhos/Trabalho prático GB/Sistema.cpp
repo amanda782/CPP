@@ -18,7 +18,7 @@ Sistema::~Sistema() {
 
 }
 void Sistema::executarPorPid(int pid) {
-	Processo* p = fila->removerPorPid(pid);
+	Processo* p = removerPorPid(pid);
 
 	if (p != nullptr) {
 		p->execute();
@@ -120,7 +120,7 @@ void Sistema::saveFila() {
 		return;
 	}
 
-	fila->salvarFila(arquivo); // pede pra fila se salvar
+	salvarFila(arquivo); // pede pra fila se salvar
 
 	arquivo.close(); // fecha o arquivo
 	cout << "Fila salva com sucesso." << std::endl;
@@ -183,7 +183,7 @@ void Sistema::carregarFila() {
 	pidCounter = maxPid + 1; //
 
 	cout << "Fila carregada com sucesso." <<endl;
-	fila->imprimirFila();
+	imprimirFila();  
 }
 
 void Sistema::executarProximo() {
@@ -194,5 +194,64 @@ void Sistema::executarProximo() {
 	}
 	else {
 		cout << "A fila esta vazia." << endl;
+	}
+}
+
+void Sistema::salvarFila(ofstream& arquivo) {
+	Node* atual = fila->topNode();
+	while (atual != nullptr) {
+		atual->processo->save(arquivo);
+		atual = atual->proximo;
+	}
+}
+
+Processo* Sistema::removerPorPid(int pid) {
+	if (fila->topNode() == nullptr) // se for uma lista vazia
+		return nullptr; // retorna nada
+
+	else if (fila->topNode()->processo->getPid() == pid) { // nesse caso removemos o primeiro
+		return fila->removerProximo();  // e ja temos metodo pra isso!!
+	}
+
+	else {
+		int voltas = fila->size();;
+		bool jaRemoveu = false;
+		Processo* retornar = nullptr;
+		for (int i = 0; i < voltas; i++) {
+			//tira o primeiro
+			Processo* removido = fila->removerProximo();
+
+			//é o que queremos remover? e ainda não removemos?
+			if (removido->getPid() == pid && !jaRemoveu) {
+				// entao uardamos o valor e NÃO devolvemos para a fila (push)
+				retornar = removido;
+				jaRemoveu = true; // a partir daqui, nunca mais entra nessa verificacao/bloco de codigo
+				// o item foi removido pois não demos push
+			}
+			else {
+				//caso nao seja oq queremos, devolvemos para o final da fila
+				fila->inserir(removido); //pusha o elemento que acabei de tirar do fim da fila
+			}
+		}
+
+		return retornar;
+	}
+
+	return nullptr;
+
+}
+
+void Sistema::imprimirFila() {
+	Node* atual = fila->topNode();
+	if (atual == nullptr) {
+		cout << "Fila vazia" << endl;
+		return;
+	}
+
+	cout << "Fila do pool de processos: " << endl;
+	while (atual != nullptr) {
+		atual->processo->imprimeProcesso();
+		cout << endl;
+		atual = atual->proximo;
 	}
 }
