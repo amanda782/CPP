@@ -87,6 +87,3 @@ int FilaProcessos::size() {
 	return tamanho;
 }
 
-Node* FilaProcessos::topNode() {
-	return head;
-}

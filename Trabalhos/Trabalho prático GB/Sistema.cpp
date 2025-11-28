@@ -175,6 +175,7 @@ void Sistema::carregarFila() {
 				maxPid = pid; // guarda o maior PID encontrado
 			}
 		}
+
 	}
 
 	arquivo.close();
@@ -184,6 +185,7 @@ void Sistema::carregarFila() {
 
 	cout << "Fila carregada com sucesso." <<endl;
 	imprimirFila();  
+
 }
 
 void Sistema::executarProximo() {
@@ -198,60 +200,69 @@ void Sistema::executarProximo() {
 }
 
 void Sistema::salvarFila(ofstream& arquivo) {
-	Node* atual = fila->topNode();
-	while (atual != nullptr) {
-		atual->processo->save(arquivo);
-		atual = atual->proximo;
+	if (fila->size() == 0) return; 
+
+	int voltas = fila->size();
+
+	for (int i = 0; i < voltas; i++) {
+		Processo* proc = fila->removerProximo();
+
+		if (proc != nullptr) {
+			proc->save(arquivo);
+
+			fila->inserir(proc);
+		}
 	}
 }
 
 Processo* Sistema::removerPorPid(int pid) {
-	if (fila->topNode() == nullptr) // se for uma lista vazia
-		return nullptr; // retorna nada
+	
+	if (fila->size() == 0)
+		return nullptr;
 
-	else if (fila->topNode()->processo->getPid() == pid) { // nesse caso removemos o primeiro
-		return fila->removerProximo();  // e ja temos metodo pra isso!!
-	}
+	int voltas = fila->size();
+	Processo* processoEncontrado = nullptr; // guarda quem achamos
+	bool jaRemoveu = false;
 
-	else {
-		int voltas = fila->size();;
-		bool jaRemoveu = false;
-		Processo* retornar = nullptr;
-		for (int i = 0; i < voltas; i++) {
-			//tira o primeiro
-			Processo* removido = fila->removerProximo();
+	for (int i = 0; i < voltas; i++) {
+		Processo* proc = fila->removerProximo();
 
-			//é o que queremos remover? e ainda não removemos?
-			if (removido->getPid() == pid && !jaRemoveu) {
-				// entao uardamos o valor e NÃO devolvemos para a fila (push)
-				retornar = removido;
-				jaRemoveu = true; // a partir daqui, nunca mais entra nessa verificacao/bloco de codigo
-				// o item foi removido pois não demos push
-			}
-			else {
-				//caso nao seja oq queremos, devolvemos para o final da fila
-				fila->inserir(removido); //pusha o elemento que acabei de tirar do fim da fila
-			}
+		if (proc->getPid() == pid && !jaRemoveu) {
+			processoEncontrado = proc;
+			jaRemoveu = true;
+		
 		}
-
-		return retornar;
+		else {
+			fila->inserir(proc);
+		}
 	}
 
-	return nullptr;
-
+	return processoEncontrado; 
 }
 
 void Sistema::imprimirFila() {
-	Node* atual = fila->topNode();
-	if (atual == nullptr) {
+
+	if (fila->size() == 0) {
 		cout << "Fila vazia" << endl;
 		return;
 	}
-
+	cout << endl; 
 	cout << "Fila do pool de processos: " << endl;
-	while (atual != nullptr) {
-		atual->processo->imprimeProcesso();
-		cout << endl;
-		atual = atual->proximo;
+
+	int voltas = fila->size();
+
+	for (int i = 0; i < voltas; i++) {
+		// remove o primeiro da fila (POP)
+	
+		Processo* proc = fila->removerProximo();// removerProximo retorna o ponteiro do Processo e deleta o Node antigo
+
+		if (proc != nullptr) {
+			proc->imprimeProcesso();
+			cout << endl;
+
+			//insere ele de volta no final imediatamente (PUSH)
+			
+			fila->inserir(proc);
+		}
 	}
 }

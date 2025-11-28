@@ -32,10 +32,11 @@ void WritingProcess::execute() {
 		return;
 	}
 
+	cout << "Executando processo de PID: " << getPid() << " || (WritingProcess)" << endl;
 	arquivo << calculo << endl; // aqui ocorre a impressao no arquivo
 	arquivo.close(); // fecha o arquivo
-
-	cout << "-> Processo " << getPid() << " executado: expressao gravada no arquivo." << endl;
+		
+	cout << "Expressao gravada no arquivo." << endl; 
 	
 }
 void WritingProcess::save(ofstream& arquivo) {

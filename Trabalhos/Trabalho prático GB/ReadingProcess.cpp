@@ -29,6 +29,7 @@ void ReadingProcess::execute() {
 		if (expressaoMat.empty()) //pula linhas em branco e segue o baile
 			continue;
 
+		cout << "Executando processo de PID: " << getPid() << " || (ReadingProcess)" << endl;
 		cout << "Lendo expressao: '" << expressaoMat << "'" << endl;
 		
 		int novoPid = sistema.getProximoPid(); // pega um pid unico p ele 

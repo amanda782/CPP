@@ -7,7 +7,7 @@
 
 class ReadingProcess :public Processo {
 public:
-	//ReadingProcess(); disse pra não colocar, pq o sistema precisa ser inicializado em outro lugar dai tb e fica bixado
+	
 	ReadingProcess(int pid, Sistema& s); // passo o sistema por parametro porque é por ele que eu vou pedir o pid e inserir na fila. 
 	~ReadingProcess();
 	void execute();

@@ -16,12 +16,13 @@ ComputingProcess::~ComputingProcess() {
 }
 
 void ComputingProcess:: execute() {
-    cout << "--- Executando Processo de Calculo (PID: " << getPid() << ") ---" << endl;
-    cout << "  Calculando: " << calculoOriginal << endl;
+
+    cout << "Executando processo de PID: " << getPid() << " || (ComputingProcess)" << endl;
+    cout << "Calculando: " << calculoOriginal << endl;
 
     double resultado = calculo.calcular();
 
-    cout << "  Resultado: " << resultado << endl;
+    cout << "Resultado: " << resultado << endl;
 }
 
 void ComputingProcess::imprimeProcesso() {

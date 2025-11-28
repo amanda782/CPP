@@ -22,7 +22,7 @@ public:
 	
 	void limparFila();
 	int size();
-	Node* topNode();
+	
 
 protected:
 	Node* head;
