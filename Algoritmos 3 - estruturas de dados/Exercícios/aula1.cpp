@@ -12,6 +12,7 @@ class myNode{
         this->value = value;
         left = nullptr;
         right = nullptr;
+        height = 1;
     }
 
     bool isLeaf(){
@@ -34,6 +35,7 @@ class myNode{
     myNode* right;
     int key;
     char value;
+    int height;
 };
 
 class binaryTree{
@@ -79,11 +81,12 @@ class binaryTree{
             return new myNode(key, value); // create a new node if we reached the end of the tree and return it to be linked to its parent (last step of the recursion)
         }
         if(value < node->value){
-            node->left = insert(node->left, key, value); // insert in the left subtree
+            node->left = insert(node->left, key, value);
         } else {
-            node->right = insert(node->right, key, value); // insert in the right subtree
+            node->right = insert(node->right, key, value);
         }
-        return node; // return the unchanged node pointer
+        node->height = 1 + max(getHeight(node->left), getHeight(node->right));
+        return node;
     }
 
     string toString(){
@@ -98,8 +101,7 @@ class binaryTree{
     }
 
     int getHeight(myNode* node){
-        if(node == nullptr) return 0;
-        return 1 + max(getHeight(node->left), getHeight(node->right));
+        return node == nullptr ? 0 : node->height;
     }
 
     void fillLines(myNode* node, vector<string>& lines, int level, int left, int right){
@@ -114,6 +116,51 @@ class binaryTree{
             lines[level * 2 + 1][mid + 1] = '\\';
             fillLines(node->right, lines, level + 1, mid + 1, right);
         }
+    }
+
+    void deleteNode(char value){
+        root = deleteNode(root, value);
+    }
+
+    myNode* deleteNode(myNode* node, char value){
+        if(node == nullptr) return nullptr;
+
+        if(value < node->value){
+            node->left = deleteNode(node->left, value);
+        } else if(value > node->value){
+            node->right = deleteNode(node->right, value);
+        } else {
+            if(node->isLeaf()){                         // caso 1: folha
+                delete node;
+                return nullptr;
+            } else if(node->left == nullptr){           // caso 2: só filho direito
+                myNode* temp = node->right;
+                delete node;
+                return temp;
+            } else if(node->right == nullptr){          // caso 3: só filho esquerdo
+                myNode* temp = node->left;
+                delete node;
+                return temp;
+            } else {                                    // caso 4: dois filhos
+                return deleteByCopy(node);
+            }
+        }
+        node->height = 1 + max(getHeight(node->left), getHeight(node->right));
+        return node;
+    }
+
+    myNode* deleteByCopy(myNode* node){
+        if(node->left == nullptr || node->right == nullptr){
+            cout << "Node does not have two children." << endl;
+            return node;
+        }
+        myNode* maxLeft = node->left;
+        while(maxLeft->right != nullptr) maxLeft = maxLeft->right; // acha o maior da subárvore esquerda
+        node->key   = maxLeft->key;                                // copia os dados
+        node->value = maxLeft->value;
+        node->left  = deleteNode(node->left, maxLeft->value);      // deleta o nó copiado
+        node->height = 1 + max(getHeight(node->left), getHeight(node->right));
+        return node;
     }
 
 };
