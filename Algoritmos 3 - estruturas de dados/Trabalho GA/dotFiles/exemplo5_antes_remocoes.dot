@@ -1,0 +1,23 @@
+digraph ArvoreBt {
+  node [fontname="Helvetica", fontsize=12];
+  edge [arrowsize=0.7];
+  node0 [label="<p0>|16|<p1>", shape=record, style=filled, fillcolor=lightblue];
+  node1 [label="<p0>|3|<p1>|7|<p2>|13|<p3>", shape=record, style=filled, fillcolor=lightblue];
+  node2 [label="<p0>|1|<p1>|2|<p2>", shape=record, style=filled, fillcolor=lightblue];
+  node3 [label="<p0>|4|<p1>|5|<p2>|6|<p3>", shape=record, style=filled, fillcolor=lightblue];
+  node4 [label="<p0>|10|<p1>|11|<p2>|12|<p3>", shape=record, style=filled, fillcolor=lightblue];
+  node5 [label="<p0>|14|<p1>|15|<p2>", shape=record, style=filled, fillcolor=lightblue];
+  node1:p0 -> node2;
+  node1:p1 -> node3;
+  node1:p2 -> node4;
+  node1:p3 -> node5;
+  node6 [label="<p0>|20|<p1>|24|<p2>", shape=record, style=filled, fillcolor=lightblue];
+  node7 [label="<p0>|17|<p1>|18|<p2>|19|<p3>", shape=record, style=filled, fillcolor=lightblue];
+  node8 [label="<p0>|21|<p1>|22|<p2>", shape=record, style=filled, fillcolor=lightblue];
+  node9 [label="<p0>|25|<p1>|26|<p2>", shape=record, style=filled, fillcolor=lightblue];
+  node6:p0 -> node7;
+  node6:p1 -> node8;
+  node6:p2 -> node9;
+  node0:p0 -> node1;
+  node0:p1 -> node6;
+}

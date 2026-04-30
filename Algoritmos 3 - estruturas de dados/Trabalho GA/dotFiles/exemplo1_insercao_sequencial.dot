@@ -1,0 +1,9 @@
+digraph ArvoreBt {
+  node [fontname="Helvetica", fontsize=12];
+  edge [arrowsize=0.7];
+  node0 [label="<p0>|20|<p1>", shape=record, style=filled, fillcolor=lightblue];
+  node1 [label="<p0>|10|<p1>", shape=record, style=filled, fillcolor=lightblue];
+  node2 [label="<p0>|30|<p1>|40|<p2>|50|<p3>", shape=record, style=filled, fillcolor=lightblue];
+  node0:p0 -> node1;
+  node0:p1 -> node2;
+}

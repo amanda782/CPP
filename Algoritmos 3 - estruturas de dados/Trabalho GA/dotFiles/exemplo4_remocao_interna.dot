@@ -1,0 +1,13 @@
+digraph ArvoreBt {
+  node [fontname="Helvetica", fontsize=12];
+  edge [arrowsize=0.7];
+  node0 [label="<p0>|6|<p1>|10|<p2>|15|<p3>", shape=record, style=filled, fillcolor=lightblue];
+  node1 [label="<p0>|3|<p1>|5|<p2>", shape=record, style=filled, fillcolor=lightblue];
+  node2 [label="<p0>|7|<p1>", shape=record, style=filled, fillcolor=lightblue];
+  node3 [label="<p0>|12|<p1>", shape=record, style=filled, fillcolor=lightblue];
+  node4 [label="<p0>|17|<p1>", shape=record, style=filled, fillcolor=lightblue];
+  node0:p0 -> node1;
+  node0:p1 -> node2;
+  node0:p2 -> node3;
+  node0:p3 -> node4;
+}
